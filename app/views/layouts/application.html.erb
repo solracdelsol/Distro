@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Distro</title>
+    <title>Distro | Better than Discord</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <% if logged_in? %>
+      <script type="text/javascript">
+          window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+      </script>
+    <% end %>
+
+    <script type="text/javascript">
+    window.cat = "<%= image_url('catyawning.png')%>"
+    </script>
   </head>
+
 
   <body>
     <%= yield %>
