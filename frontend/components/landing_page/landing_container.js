@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import LandingPage from "./landing";
-import { logout } from "../../actions/session";
+import { logout,login } from "../../actions/session";
 
 const msp = (state) => ({
 });

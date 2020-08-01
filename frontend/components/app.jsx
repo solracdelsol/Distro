@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { Route, Redirect, Switch, Link, HashRouter } from "react-router-dom";
 
-import LandingPageContainer from './landing_page/landing';
+import LandingPageContainer from './landing_page/landing_container';
 import SignUpFormContainer from './signup/signup_container';
 import LoginFormContainer from './login/login_form_container';
 import HomePageContainer from './home_page/home_container'
@@ -15,9 +15,6 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
 const App = () => (
   <div>
-    <header>
-      <h1>Distro</h1>
-    </header>
     <Switch>
       <AuthRoute exact path="/" component={LandingPageContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
