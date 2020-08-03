@@ -1,47 +1,80 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-class SignupForm extends React.Component {
-  constructor(props) {
+
+class Signup extends React.Component{
+  constructor(props){
     super(props);
-    this.state = { email:'', username:'', password:''};
+    this.state = { username:'', email:'', password:''}
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
+  }
+
+  update(field){
+    return (e) => this.setState({[field]: e.target.value})
   }
 
   handleSubmit(e){
     e.preventDefault();
-    return this.props.signup(this.state);
-    // redirect after signup on this line???
-  };
+    return this.props.createNewUser(this.state) /*whereever you want to redirect after signup */
+  }
 
-  update(field){
-    return (e) => this.setState({[field]:e.currentTarget.value});
-  };
-
-  render() {
-
-    const signupFormTemplate = () => (
-      <div className='signup-form-container'>
-        <div className='signup-form'>
-          <form onSubmit={this.handleSubmit}>
-            <label>Create an account</label>
-            <label><h5>EMAIL</h5>
-            <input type="text" onChange={this.update('email')} value={this.state.email} className='signup-input'/>
-            </label>
-            <label><h5>USERNAME</h5>
-            <input type="text" onChange={this.update('username')} value={this.state.username} className='signup-input'/>
-            </label>
-            <label><h5>PASSWORD</h5>
-            <input type="text" onChange={this.update('password')} value={this.state.password} className='signup-input'/>
-            </label>
-            <button className='signup-submit-button'>Continue</button>
-          </form>
+  render(){
+    return (
+        <div className="signup-background">
+          <div className="signup-form-container">
+            <div className="signup-form">
+              <div className="signup-input">
+                <h4 className="create-account-caption">Create an Account</h4>
+                <form className="form" onSubmit={this.handleSubmit}>
+                  <label className="signup-username">
+                    <h5>
+                      Username
+                    </h5>
+                    <input
+                      type="text"
+                      value={this.state.username}
+                      onChange={this.update("username")}
+                      className="signup-input"
+                    />
+                  </label>
+                  <label className="signup-email">
+                    <h5>
+                      Email
+                    </h5>
+                    <input
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.update("email")}
+                      className="signup-input"
+                    />
+                  </label>
+                  <label className="signup-password">
+                    <h5>
+                      Password
+                    </h5>
+                    <input
+                      type="text"
+                      value={this.state.password}
+                      onChange={this.update("password")}
+                      className="signup-input"
+                    />
+                  </label>
+                  <div>
+                  <button className="signup-submit-button">
+                    <div>Continue</div>
+                  </button>
+                  </div>
+                  <div className="login-link">
+                    <Link className="redirect-login" to="/login">Already have an account?</Link>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <Link to='/login'>Already have an account?</Link>
-      </div>
     );
-    return signupFormTemplate();
   }
 }
 
-export default SignupForm;
+export default Signup;

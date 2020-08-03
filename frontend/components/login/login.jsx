@@ -19,36 +19,42 @@ class LoginForm extends React.Component {
 
   render() {
     const signupFormTemplate = () => (
-      <div className="login-form-container">
-        <div className="login-form">
-          <form onSubmit={this.handleSubmit}>
-            <label>Welcome back!</label>
-            <h5>We're so excited to see you again!</h5>
-            
-            <label><h5>EMAIL</h5>
-              <input
-                type="text"
-                onChange={this.update('email')}
-                value={this.state.email}
-                className="login-input"
-              />
-            </label>
+      <div className="login-background">
+        <div className="login-form-container">
+          <div className="login-form">
+            <div className="login-input">
+              <form onSubmit={this.handleSubmit}>
+                <h4 className="welcome-back">Welcome back!</h4>
+                <h5 className="welcome-subcaption">We're so excited to see you again!</h5>
+                
+                <label className="login-email"><h5>EMAIL</h5>
+                  <input
+                    type="text"
+                    onChange={this.update('email')}
+                    value={this.state.email}
+                    className="login-input"
+                  />
+                </label>
+  
+                <label className="login-password"><h5>PASSWORD</h5>
+                <input
+                  type="text"
+                  onChange={this.update('password')}
+                  value={this.state.password}
+                  className="login-input"
+                />
+                </label>
+                <button className="login-submit-button">
+                  <div>Login</div>
+                </button>
+              </form>
 
-            <label><h5>PASSWORD</h5>
-            <input
-              type="text"
-              onChange={this.update('password')}
-              value={this.state.password}
-              className="login-input"
-            />
-            </label>
-            
-            <button className="login-submit-button">Continue</button>
-          </form>
-        </div>
-        <div>
-          &nbsp;Need an account?&nbsp;
-          <Link to="/register">Register</Link>
+              <div className="register-link">
+                &nbsp;Need an account?&nbsp;
+                <Link className="redirect-register" to="/register">Register</Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -1,14 +1,11 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
+import {createNewUser} from '../../actions/session.js';
+import Signup from './signup.jsx';
 
-import { createNewUser } from "../../actions/session";
-import SignupForm from "./signup";
+//msp not needed right now
 
-const msp = (state, ownProps) => ({
-  errors: state.errors.session, //the slice holding our sessionErrorsReducer
+const mdp = dispatch => ({
+  createNewUser: formUser => dispatch(createNewUser(formUser))
 });
 
-const mdp = (dispatch) => ({
-  signup: (userForm) => dispatch(createNewUser(userForm)),
-});
-
-export default connect(msp, mdp)(SignupForm);
+export default connect(null, mdp)(Signup);
