@@ -27,31 +27,32 @@ class LoginForm extends React.Component {
                 <h4 className="welcome-back">Welcome back!</h4>
                 <h5 className="welcome-subcaption">We're so excited to see you again!</h5>
                 
-                <label className="login-email"><h5>EMAIL</h5>
+                <label className={this.props.errors['email'] ? 'error-label' : 'login-email'}><h5>{this.props.errors['password'] ? 'EMAIL - Invalid email/password' : 'EMAIL'}</h5>
                   <input
                     type="text"
                     onChange={this.update('email')}
                     value={this.state.email}
                     className="login-input"
+                  
                   />
                 </label>
   
-                <label className="login-password"><h5>PASSWORD</h5>
-                <input
+                <label className={this.props.errors['password'] ? 'error-label' : "login-password" }><h5>{this.props.errors['password'] ? 'PASSWORD - Invalid email/password' : 'PASSWORD'}</h5>
+                <input 
                   type="text"
                   onChange={this.update('password')}
                   value={this.state.password}
                   className="login-input"
                 />
                 </label>
-                <button className="login-submit-button">
+                <button onClick={this.props.clearErrors} className="login-submit-button">
                   <div>Login</div>
                 </button>
               </form>
 
               <div className="register-link">
                 &nbsp;Need an account?&nbsp;
-                <Link className="redirect-register" to="/register">Register</Link>
+                <Link onClick={this.props.clearErrors} className="redirect-register" to="/register">Register</Link>
               </div>
             </div>
           </div>

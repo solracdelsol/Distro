@@ -73,7 +73,13 @@
 
       .login-email, .login-password{
         color: rgb(209, 202, 202);
+        font-size: smaller;
       }
+
+      .error-label{
+          color: rgb(247, 0, 0);
+          font-size: smaller;
+        }
 
       .login-submit-button{
         background-color: #7289da;
@@ -200,3 +206,7 @@
     }
   }
 }
+
+
+
+
