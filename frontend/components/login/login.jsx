@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
                 <h4 className="welcome-back">Welcome back!</h4>
                 <h5 className="welcome-subcaption">We're so excited to see you again!</h5>
                 
-                <label className={this.props.errors['email'] ? 'error-label' : 'login-email'}><h5>{this.props.errors['password'] ? 'EMAIL - Invalid email/password' : 'EMAIL'}</h5>
+                <label className={this.props.errors['email'] ? 'error-label' : 'login-email'}><h5>{this.props.errors['email'] ? 'EMAIL - Invalid email/password' : 'EMAIL'}</h5>
                   <input
                     type="text"
                     onChange={this.update('email')}

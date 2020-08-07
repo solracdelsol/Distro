@@ -4,6 +4,23 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :session_token, presence: true, uniqueness: true
 
+
+  has_many :hosted_servers,
+  foreign_key: :host_id,
+  class_name: :Server
+  
+
+  has_many :server_subscriptions,
+  through: :subscriptions
+
+
+
+
+  #THINK ABOUT HOW YOURE GOING TO CONNECT THIS ASSOCIATION
+  # belongs_to :server,
+  # foreign_key: :participants_id,
+  # class_name: :Server
+
   #FIG VAPER CHECK W7D1 NOTES
 
   attr_reader :password

@@ -6,8 +6,7 @@
   min-height: 2000px;
   margin: 0;
   width: 100%;
-  
-  
+  position: relative;
   
 
  
@@ -16,14 +15,74 @@
  
 
   .center-display{
-    display: flex;
-    align-items: flex-end;
+    // display: flex;
+    // align-items: flex-end;
+    width: 780px;
+    height: 203px;
+    text-align: center;
+    position: absolute;
+    top: 200px;
+    left: 325px;
+    color: whitesmoke;
+    font-family: sans-serif;
+    
 
     .center-text{
 
+      .landing-main-caption{
+        font-size: 56px;
+        padding-bottom: 30px;
+        font-weight: bolder;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      }
+
+      .landing-sub-caption{
+        font-size: 20px;
+        height: 105px;
+        line-height: 30px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      }
     }
 
     .center-btns{
+
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+
+      .landing-signup{
+        margin-top: 24px;
+        // margin-right: 24px;
+        color: black;
+        font-weight: 500px;
+        font-size: 23px;
+        background: whitesmoke;
+        cursor: pointer;
+        width: 250px;
+        height: 45px;
+        border: none;
+        text-align: center;
+        border-radius: 30px;
+        text-decoration: none;
+        justify-content: center;
+        padding-top: 15px;
+        // padding-bottom: -20px;
+
+
+      }
+      .landing-demo-login{
+        margin-top: 24px;
+        color: whitesmoke;
+        font-weight: 500px;
+        font-size: 23px;
+        background: rgb(39, 39, 39);
+        cursor: pointer;
+        width: 250px;
+        height: 60px;
+        border: none;
+        text-align: center;
+        border-radius: 30px;
+      }
 
 
     }

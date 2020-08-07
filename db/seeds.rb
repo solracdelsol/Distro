@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+ActiveRecord::Base.transaction do 
+Server.destroy_all
+User.destroy_all
+demo_user1 = User.create!(username:'carlos', email:'carlos', password:'carlos')
+demo_server1 = Server.create!(server_title: 'demo1', host_id: demo_user1.id)
+demo_server2 = Server.create!(server_title: 'demo2', host_id: demo_user1.id)
+demo_server3 = Server.create!(server_title: 'demo3', host_id: demo_user1.id)
+end

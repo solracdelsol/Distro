@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
+
+    resources :users do
+      resources :servers, only: [:create, :destroy, :index]
+    end  #nested so users have routes to their servers
+
   end
 
  root "static_pages#root"

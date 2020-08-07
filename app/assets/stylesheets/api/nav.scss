@@ -6,12 +6,25 @@
   
 
   .nav-left-cont{
+      display: grid;
+      grid-template-columns: 40px 10px;
+      grid-gap: 5px;
+      cursor: pointer;
+    
+    .distro-title{
+      margin-top: 10px;
+      font-weight: bolder;
+      font-size: 30px;
+    }
     
     .logo{
-      background-color: red;
+      background-image: asset_url("logo.png");
+      background-size: contain;
+      background-repeat: no-repeat;
       padding: 20px;
       cursor: pointer;
       font-weight: bolder;
+      margin-top: 5px;
     }
   }
 
@@ -30,7 +43,11 @@
       cursor: pointer;
     }
 
-    .nav-nitro{
+    .nav-github{
+      margin-top: 10px;
+      background-image: asset_url('github.png');
+      background-size: contain;
+      background-repeat: no-repeat;
       padding: 20px;
       cursor: pointer;
     }
