@@ -1,4 +1,8 @@
-json.extract! server, :id, :host_id, :server_title
+  json.set! server.id do
+    json.serverId server.id
+    json.serverTitle server.server_title
+    json.hostId server.host_id
+  end
 
 #send back channel info as well for ajax request
 #channels associated with that server along with this server request

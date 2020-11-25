@@ -6,9 +6,16 @@ class Server < ApplicationRecord
   foreign_key: :host_id,
   class_name: :User
 
-  # has_many :subscriptions,
-  # foreign_key: :server_id,
-  # class_name: :Subscription
+  has_many :subscriptions,
+  foreign_key: :server_id,
+  class_name: :Subscription
+
+  has_many :users,
+  through: :subscriptions
+
+  has_many :channels,
+  foreign_key: :server_id,
+  class_name: :Channel
 
 
   

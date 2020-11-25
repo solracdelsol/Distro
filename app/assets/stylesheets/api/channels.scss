@@ -1,0 +1,39 @@
+.channel-bar-container{
+    display: flex;
+    position: relative;
+    max-width: 72px;
+    height: 100vh;
+    left: auto;
+    flex-direction: column;
+    width: 240px;
+    max-width: 240px;
+    margin-right: 1px;
+    padding-left: 20px;
+
+  .channel-bar{
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .channel-list{
+      flex-direction: column;
+      justify-content: space-between;
+      height: inherit;
+      width: inherit;
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      
+      
+
+
+    
+    }
+  }
+
+ 
+
+}

@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_173254) do
+ActiveRecord::Schema.define(version: 2020_10_23_183803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channels", force: :cascade do |t|
+    t.string "ch_title", null: false
+    t.integer "server_id" null:false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "servers", force: :cascade do |t|
     t.string "server_title", null: false

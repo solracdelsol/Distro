@@ -7,13 +7,14 @@ import { postSession } from "./util/session";
 import { postUser } from "./util/session";
 import { deleteSession } from "./util/session";
 import { createNewUser, login, logout } from "./actions/session";
+import { getServers } from "./util/server"
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   
-
+  window.getServers = getServers
   // window.postUser = postUser;
   // window.postSession = postSession;
   // window.deleteSession = deleteSession;
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.dispatch = store.dispatch; 
   // window.createNewUser = createNewUser;
   // window.login = login;
-  // window.logout = logout;
+  window.logout = logout;
 
   let store;
   if (window.currentUser) {

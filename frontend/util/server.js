@@ -1,5 +1,6 @@
-export const postServer = (server) => ({
+export const getServers = (server) => (
   $.ajax({
-    url: 
+    url: "api/servers",
+    method: "GET",
   })
-})
+);

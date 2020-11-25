@@ -10,12 +10,21 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def new  #dont know if i need this?
-    @user = User.new
-    render :new
+  def show
+    @user = User.find_by(id: params[:id])
+    render 'api/users/show'
   end
 
-  
+  def index
+    @users = User.all
+    render "api/users/index"
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    render "api/users/update"
+  end
 
   private
 

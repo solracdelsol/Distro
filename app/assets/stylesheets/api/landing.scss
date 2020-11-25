@@ -1,11 +1,12 @@
 .body{
 
   background:asset_url("distro_splash.png");
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: contain;
-  min-height: 2000px;
+
   margin: 0;
   width: 100%;
+  height: 100vh;
   position: relative;
   
 

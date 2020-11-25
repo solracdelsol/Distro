@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ServerBar from "../serverbar/serverbar_container"
+import ChannelBar from "../channelbar/channelbar_container"
+import Messages from "../messages/messages_container"
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -9,19 +12,11 @@ class HomePage extends React.Component {
   render() {
     
     const homePageTemplate = () => (
-      <div>
-        <h1>YOU ARE LOGGED IN!</h1>
-        <h3>More content to come...</h3>
-        <iframe
-          width="966"
-          height="543"
-          src="https://www.youtube.com/embed/fQ1OA9Wyf2U?autoplay=1"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        <div>
-        <button onClick={this.props.logout}>Log Out</button>
+      <div className="homepage-container">
+        <div className="homepage">
+        <ServerBar/>
+        <ChannelBar/>
+        <Messages/>
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 class Api::ServersController < ApplicationController
+
   def create
     @server = Server.new(server_params)
 
@@ -13,7 +14,7 @@ class Api::ServersController < ApplicationController
     @server = Server.find_by(id: params[:server][:id])
 
     if @server
-      render :show
+      render "api/servers/show"
     else
       render json: ["Server not found"], status: 404
     end
@@ -21,21 +22,27 @@ class Api::ServersController < ApplicationController
   end
 
   def index
-    @servers = current_user.hosted_servers
+    # @current_user = User.find_by(session_token: session[:session_token])
+    @servers = current_user.servers
+    # @servers = Server.all
 
     if @servers
       render "api/servers/index"
     else
-      render json: ["No servers found"]
+      flash[:notice] = "No servers found"
+    end
+  end
+
+  def update
+    @server = current_user.hosted_servers.find(params[:id])
+    if @server.update!(server_params)
+      render "api/servers/show"
+    else
+      flash[:notice] = "Unable to update."
     end
   end
 
   def destroy
-    # @server = Server.find_by_credentials(
-    #   params[:server][:server_title],
-    #   params[:server][:host_id]
-    # ) # This is potentially another option
-
     @server = current_user.hosted_servers.find_by_credentials(
       params[:server][:id]
     )

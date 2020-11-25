@@ -8,10 +8,22 @@ class User < ApplicationRecord
   has_many :hosted_servers,
   foreign_key: :host_id,
   class_name: :Server
-  
 
   has_many :server_subscriptions,
-  through: :subscriptions
+  foreign_key: :user_id,
+  class_name: :Subscription
+
+  has_many :servers,
+  through: :server_subscriptions,
+  class_name: :Server
+
+  
+  
+
+  # has_many :server_subscriptions,
+  # through: :subscriptions
+
+
 
 
 

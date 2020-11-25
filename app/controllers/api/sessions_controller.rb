@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-    def create #creates a session --> log in
+  def create #creates a session --> log in
     @user = User.find_by_credentials(
       params[:user][:email],
       params[:user][:password]

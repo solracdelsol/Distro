@@ -1,0 +1,15 @@
+
+
+.homepage-container{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  .homepage{
+    flex-direction: row;
+    position: relative;
+    justify-content: space-evenly;
+    display: flex;
+  }
+}
