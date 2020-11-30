@@ -17,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getServers = getServers
   // window.postUser = postUser;
   // window.postSession = postSession;
-  // window.deleteSession = deleteSession;
+  window.deleteSession = deleteSession;
 
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch; 
+
   // window.createNewUser = createNewUser;
-  // window.login = login;
+  window.login = login;
   window.logout = logout;
 
   let store;
@@ -38,7 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
       session: { id }
       };
     store = configureStore(preloadedState);
-
+    
+  window.getState = store.getState;
+  window.dispatch = store.dispatch; 
     // Clean up after ourselves so we don't accidentally use the
     // global currentUser instead of the one in the store
     delete window.currentUser;
