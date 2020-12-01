@@ -31,18 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const preloadedState = { 
       entities: {
         users: {
-          [id]: currentUser
+          id: currentUser
         }
       },
-      session: { id }
+      session: {currentUser: window.currentUser},
       };
     store = configureStore(preloadedState);
-    
+
   window.getState = store.getState;
-  window.dispatch = store.dispatch; 
+  // window.dispatch = store.dispatch; 
     // Clean up after ourselves so we don't accidentally use the
     // global currentUser instead of the one in the store
-    delete window.currentUser;
+    // delete window.currentUser;
 
   } else {
     store = configureStore();
@@ -50,4 +50,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ReactDOM.render(<Root store={store} />, root);
 });
-
