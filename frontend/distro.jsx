@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const preloadedState = { 
       entities: {
         users: {
-          id: currentUser
+          id: currentUser // [id]: currentUser comes out undefined -- TALK TO COACH ABOUT IT, this format in general does not work
         }
+        // REMEMBER TO ADD SERVERS AND CHANNELS TO THIS PRELOADED STATE, USING UTIL
       },
       session: {currentUser: window.currentUser},
       };
