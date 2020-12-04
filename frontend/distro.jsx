@@ -8,6 +8,7 @@ import { postUser } from "./util/session";
 import { deleteSession } from "./util/session";
 import { createNewUser, login, logout } from "./actions/session";
 import { getServers } from "./util/server"
+import { getChannels } from "./util/channel"
 
 
 
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   
   window.getServers = getServers
+  window.getChannels = getChannels
   // window.postUser = postUser;
   // window.postSession = postSession;
   window.deleteSession = deleteSession;
@@ -35,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         // REMEMBER TO ADD SERVERS AND CHANNELS TO THIS PRELOADED STATE, USING UTIL
       },
-      session: {currentUser: window.currentUser},
+      session: {id: Object.values(window.currentUser)[0].id},
       };
     store = configureStore(preloadedState);
 

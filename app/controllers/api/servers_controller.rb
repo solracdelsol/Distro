@@ -1,4 +1,5 @@
 class Api::ServersController < ApplicationController
+  #skip_before_action :verify_authenticity_token
 
   def create
     @server = Server.new(server_params)
@@ -22,9 +23,8 @@ class Api::ServersController < ApplicationController
   end
 
   def index
-    # @current_user = User.find_by(session_token: session[:session_token])
-    @servers = current_user.servers
-    # @servers = Server.all
+    #@current_user = User.find_by(session_token: session[:session_token])
+    @servers = current_user.servers #needs a current_user for this to work
 
     if @servers
       render "api/servers/index"
@@ -43,12 +43,13 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
-    @server = current_user.hosted_servers.find_by_credentials(
+    @server = current_user.hosted_servers.find_by(
       params[:server][:id]
     )
+    # @server = Server.find(params[:id]) would also probably work
 
     if @server
-      @server.destroy
+      @server.destroy!
     else
       render json: ["Server not found"], status: 404
     end

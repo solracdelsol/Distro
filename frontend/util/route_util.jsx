@@ -23,7 +23,7 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
 );
 
 const mapStateToProps = (state) => {
-  return { loggedIn: Boolean(state.session.currentUser) }; // THIS FIXED THE LOGIN REFRESH, USED TO BE STATE.SESSION.ID 
+  return { loggedIn: Boolean(state.session.id) }; // THIS FIXED THE LOGIN REFRESH, USED TO BE STATE.SESSION.ID 
 };
 
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
