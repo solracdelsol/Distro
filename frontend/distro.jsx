@@ -7,16 +7,28 @@ import { postSession } from "./util/session";
 import { postUser } from "./util/session";
 import { deleteSession } from "./util/session";
 import { createNewUser, login, logout } from "./actions/session";
-import { getServers } from "./util/server"
-import { getChannels } from "./util/channel"
+import { postServer, getServers, getServer, editServer, deleteServer } from "./util/server"
+import { postChannel, getChannels, getChannel, editChannel, deleteChannel } from "./util/channel"
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   
+  //test server jquery
+  window.postServer = postServer
   window.getServers = getServers
+  window.getServer = getServer
+  window.editServer = editServer
+  window.deleteServer = deleteServer
+
+  //test channel jquery
+  window.postChannel = postChannel
   window.getChannels = getChannels
+  window.getChannel = getChannel
+  window.editChannel = editChannel
+  window.deleteChannel = deleteChannel
+
   // window.postUser = postUser;
   // window.postSession = postSession;
   window.deleteSession = deleteSession;

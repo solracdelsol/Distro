@@ -5,7 +5,7 @@ class Api::ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
 
-    if @channel.save
+    if @channel.save!
       @channels = Server.find_by(params[:id]).channels #add this line because the index jbuilder has the same variable
       render "api/channels/index"
     else
@@ -32,7 +32,7 @@ class Api::ChannelsController < ApplicationController
     else
       flash[:notice] = "No channels found"
     end
-    
+
   end
 
   def update

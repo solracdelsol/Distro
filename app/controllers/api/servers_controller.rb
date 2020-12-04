@@ -1,11 +1,14 @@
 class Api::ServersController < ApplicationController
-  #skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def create
     @server = Server.new(server_params)
 
-    if @server.save
-      render "api/servers/show"
+    if @server.save!
+      subscribe = Subscription.new(server_id:Server.last.id, user_id:Server.last.host_id)
+      subscribe.save!
+      @servers = current_user.servers
+      render "api/servers/index"
     else
       render json: ["Unable to process your request"], status: 404
     end
@@ -43,13 +46,15 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
-    @server = current_user.hosted_servers.find_by(
-      params[:server][:id]
-    )
-    # @server = Server.find(params[:id]) would also probably work
+    # @server = current_user.hosted_servers.find_by(
+    #   params[:server][:id]
+    # )
+    @server = Server.find(params[:id]) #would also probably work
+    subscriptions = @server.subscriptions
 
-    if @server
-      @server.destroy!
+    if subscriptions.each { |sub| sub.destroy!} && @server.destroy!
+        @servers = current_user.hosted_servers
+        render "api/servers/index"
     else
       render json: ["Server not found"], status: 404
     end
