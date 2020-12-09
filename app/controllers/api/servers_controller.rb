@@ -11,7 +11,7 @@ class Api::ServersController < ApplicationController
       channel = Channel.new(ch_title: "General", server_id: Server.last.id) #create the default General channel for the server
       channel.save!
 
-      @servers = current_user.servers
+      @servers = current_user.servers #we create an @servers variable available because that's the variable we want to access for the jbuilder api views
       render "api/servers/index"
     else
       render json: ["Unable to process your request"], status: 404
@@ -19,8 +19,8 @@ class Api::ServersController < ApplicationController
   end
 
   def show
-    @server = Server.find_by(id: params[:server][:id])
-
+    @server = Server.find_by( id:params[:id])
+    #debugger #uncomment the debugger to see what params are for this specific route
     if @server
       render "api/servers/show"
     else
@@ -32,7 +32,7 @@ class Api::ServersController < ApplicationController
   def index
     #@current_user = User.find_by(session_token: session[:session_token])
     @servers = current_user.servers #needs a current_user for this to work
-
+  
     if @servers
       render "api/servers/index"
     else
