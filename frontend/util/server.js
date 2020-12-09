@@ -13,14 +13,14 @@ export const getServer = (serverId) => (
   })
 );
 
-export const getServers = () => (
+export const getServers = () => ( //gets all of currentUser's servers
   $.ajax({
     url: "api/servers",
     method: "GET",
   })
 );
 
-export const editServer = (editForm) => (
+export const editServer = (editForm) => ( //NOTE: alternate option is to add second argument denoting serverId, might come in handy
   $.ajax({
     url: `api/servers/${editForm.id}`,
     method: "PATCH",

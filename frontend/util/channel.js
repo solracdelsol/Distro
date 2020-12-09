@@ -13,7 +13,7 @@ export const getChannel = (serverId, channelId) => (
   })
 );
 
-export const getChannels = (serverId) => (
+export const getChannels = (serverId) => ( //gets all channels of a given server
   $.ajax({
     url: `api/servers/${serverId}/channels`,
     method: "GET",
