@@ -33,9 +33,9 @@ const clearChannel = (channelObj) => ({
 //   errors,
 // });
 
-export const clearChannelErrors = () =>({
-  type: CLEAR_CHANNEL_ERRORS
-})
+// export const clearChannelErrors = () =>({
+//   type: CLEAR_CHANNEL_ERRORS
+// })
 
 //thunk action creators
 
@@ -67,7 +67,7 @@ export const patchChannel = (channelObj) => {
 
 export const deleteChannel = (channelObj) => {
   return APIUtil.deleteChannel(channelObj).then( () => {
-    return dispatch(clearChannel(channelObj.id))
+    return dispatch(clearChannel(channelObj))
   })
 }
 

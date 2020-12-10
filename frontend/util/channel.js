@@ -29,7 +29,7 @@ export const editChannel = (editForm) => (
   })
 )
 //note: package data like this data = {channel:{ch_title:"test", server_id: 7}}
-//editChannel(7,10, data);
+//editChannel(7,10, data); (this is a previous refactor of code in case i have to switch back)
 
 export const deleteChannel = (channelObj) => (
   $.ajax({

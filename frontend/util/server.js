@@ -6,9 +6,9 @@ export const postServer = (formData) =>(
   })
 )
 
-export const getServer = (serverId) => (
+export const getServer = (serverObj) => (
   $.ajax({
-    url: `api/servers/${serverId}`,
+    url: `api/servers/${serverObj.serverId}`,
     method: "GET",
   })
 );
@@ -24,13 +24,13 @@ export const editServer = (editForm) => ( //NOTE: alternate option is to add sec
   $.ajax({
     url: `api/servers/${editForm.id}`,
     method: "PATCH",
-    data: editForm,
+    data: {server: {server_title: editForm.serverId, host_id: editForm.hostId } }
   })
 )
 
-export const deleteServer = (serverId) => (
+export const deleteServer = (serverObj) => (
   $.ajax({
-    url: `api/servers/${serverId}`,
+    url: `api/servers/${serverObj.serverId}`,
     method: "DELETE"
   })
 )
