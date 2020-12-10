@@ -18,20 +18,20 @@ const receiveChannels = (channels) => ({
   channels,
 })
 
-const patchChannel = (channel) => ({
-  type: EDIT_CHANNEL,
-  channel,
-})
+// const patchChannel = (channel) => ({ // NOT NEEDED
+//   type: EDIT_CHANNEL,
+//   channel,
+// })
 
 const clearChannel = (channelId) => ({
   type: CLEAR_CHANNEL,
   channelId // needs to know which channel needs to be cleared from frontend
 })
 
-const receiveChannelErrors = (errors) => ({
-  type: RECEIVE_CHANNEL_ERRORS,
-  errors,
-});
+// const receiveChannelErrors = (errors) => ({
+//   type: RECEIVE_CHANNEL_ERRORS,
+//   errors,
+// });
 
 export const clearChannelErrors = () =>({
   type: CLEAR_CHANNEL_ERRORS
@@ -46,21 +46,22 @@ export const createChannel = (channelForm) => (dispatch) => {
   // , (errors) => dispatch(receiveServerErrors(errors)))
 };
 
-export const receiveChannel = (channelId) => {
+export const getChannel = (channelId) => {
   return APIUtil.getChannel(channelId).then((channel) => {
      return dispatch(recieveChannel(channel))
     });
 };
 
-export const receiveChannels = () => {
+export const getChannels = () => {
   return APIUtil.getChannels().then((channels) => {
-     return dispatch(recieveChannels(channels))
+     return dispatch(receiveChannels(channels))
     });
 };
 
 export const patchChannel = (channelId) => {
   return APIUtil.editChannel(channelId).then((editedChannel) => {
-    return dispatch(patchChannel(editedChannel))
+    return dispatch(receiveChannel(editedChannel)) 
+// will use RECIEVE_CHANNEL because Object.assign will replace the pre-edited channel object in the frontend
   });
 };
 
@@ -69,3 +70,7 @@ export const deleteChannel = (channelId) => {
     return dispatch(clearChannel(channelId))
   })
 }
+
+//IMPORTANT, MAY HAVE TO REFACTOR ACTION FILE AND THE CHANNEL UTIL FILE
+//IDEA -> FOR CHANNEL UTIL, i can have it accept a frontend state object of a channel instead, so that it only needs one argument to get all the API routing info from
+//^ confirm with coach
