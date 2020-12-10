@@ -1,6 +1,4 @@
-//FIX THIS UP
-
-import {RECEIVE_CHANNEL, RECEIVE_CHANNELS, EDIT_CHANNEL, CLEAR_CHANNEL} from '../actions/channel';
+import {RECEIVE_CHANNEL, RECEIVE_CHANNELS, CLEAR_CHANNEL} from '../actions/channel';
 
 
 

@@ -23,9 +23,9 @@ const receiveChannels = (channels) => ({
 //   channel,
 // })
 
-const clearChannel = (channelId) => ({
+const clearChannel = (channelObj) => ({
   type: CLEAR_CHANNEL,
-  channelId // needs to know which channel needs to be cleared from frontend
+  channelId: channelObj.id, // needs to know which channel needs to be cleared from frontend
 })
 
 // const receiveChannelErrors = (errors) => ({
@@ -46,8 +46,8 @@ export const createChannel = (channelForm) => (dispatch) => {
   // , (errors) => dispatch(receiveServerErrors(errors)))
 };
 
-export const getChannel = (channelId) => {
-  return APIUtil.getChannel(channelId).then((channel) => {
+export const getChannel = (channelObj) => {
+  return APIUtil.getChannel(channelObj).then((channel) => {
      return dispatch(recieveChannel(channel))
     });
 };
@@ -58,16 +58,16 @@ export const getChannels = () => {
     });
 };
 
-export const patchChannel = (channelId) => {
-  return APIUtil.editChannel(channelId).then((editedChannel) => {
+export const patchChannel = (channelObj) => {
+  return APIUtil.editChannel(channelObj).then((editedChannel) => {
     return dispatch(receiveChannel(editedChannel)) 
 // will use RECIEVE_CHANNEL because Object.assign will replace the pre-edited channel object in the frontend
   });
 };
 
-export const deleteChannel = (channelId) => {
-  return APIUtil.deleteChannel(channelId).then( () => {
-    return dispatch(clearChannel(channelId))
+export const deleteChannel = (channelObj) => {
+  return APIUtil.deleteChannel(channelObj).then( () => {
+    return dispatch(clearChannel(channelObj.id))
   })
 }
 

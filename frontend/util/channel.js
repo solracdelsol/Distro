@@ -38,6 +38,6 @@ export const deleteChannel = (channelObj) => (
   })
 )
 
-//IMPORTANT, MAY HAVE TO REFACTOR ACTION FILE AND THE CHANNEL UTIL FILE
+//--REFACTORED ALREADY--- IMPORTANT, MAY HAVE TO REFACTOR ACTION FILE AND THE CHANNEL UTIL FILE
 //IDEA -> FOR CHANNEL UTIL, i can have it accept a frontend state object of a channel instead, so that it only needs one argument to get all the API routing info from
 //^ confirm with coach
