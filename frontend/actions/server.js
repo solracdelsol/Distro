@@ -2,7 +2,7 @@ import { getServer, getServers, postServer, editServer, deleteServer } from "../
 
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
-export const CLEAR_SERVERS = "CLEAR_SERVERS";
+export const CLEAR_SERVER = "CLEAR_SERVER";
 export const EDIT_SERVER = "EDIT_SERVER";
 
 // action creators
@@ -23,7 +23,7 @@ const patchServer = (server) => ({
 })
 
 const clearServer = (serverId) => ({
-  type: CLEAR_SERVERS,
+  type: CLEAR_SERVER,
   serverId // needs to know which server needs to be cleared from frontend
 })
 
@@ -41,8 +41,8 @@ export const clearServerErrors = () =>({
 export const createServer = (serverForm) => (dispatch) => {
   return postServer(serverForm).then( (server) => {
     return dispatch(recieveServer(server));
-  },
-  (errors) => dispatch(receiveServerErrors(errors)))
+  });
+  //, (errors) => dispatch(receiveServerErrors(errors))) // when adding for an errors slice of state
 };
 
 export const receiveServer = (serverId) => {
