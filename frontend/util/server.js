@@ -24,7 +24,7 @@ export const editServer = (editForm) => ( //NOTE: alternate option is to add sec
   $.ajax({
     url: `api/servers/${editForm.id}`,
     method: "PATCH",
-    data: {server: {server_title: editForm.serverId, host_id: editForm.hostId } }
+    data: {server: {server_title: editForm.serverTitle, host_id: editForm.hostId } }
   })
 )
 
