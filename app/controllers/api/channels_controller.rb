@@ -6,7 +6,7 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
 
     if @channel.save!
-      @channels = Server.find_by(params[:id]).channels #add this line because the index jbuilder has the same variable
+      @channels = Server.find_by(id: params[:server_id]).channels #add this line because the index jbuilder has the same variable
       render "api/channels/index"
     else
       render json: ["Unable to process your request"], status: 404
@@ -24,8 +24,9 @@ class Api::ChannelsController < ApplicationController
   end
 
   def index
-    @server = Server.find_by(params[:id])
-    
+    # debugger
+    @server = Server.find_by(id: params[:server_id])
+    # debugger
     @channels = @server.channels
     if @channels
       render "api/channels/index"
