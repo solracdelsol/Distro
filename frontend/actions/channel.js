@@ -46,26 +46,26 @@ export const createChannel = (channelForm) => (dispatch) => {
   // , (errors) => dispatch(receiveServerErrors(errors)))
 };
 
-export const getChannel = (channelObj) => {
+export const getChannel = (channelObj) => (dispatch) => {
   return APIUtil.getChannel(channelObj).then((channel) => {
      return dispatch(recieveChannel(channel))
     });
 };
 
-export const getChannels = () => {
-  return APIUtil.getChannels().then((channels) => {
+export const getChannels = (serverObj) => (dispatch) => {
+  return APIUtil.getChannels(serverObj).then((channels) => {
      return dispatch(receiveChannels(channels))
     });
 };
 
-export const patchChannel = (channelObj) => {
+export const patchChannel = (channelObj) => (dispatch) => {
   return APIUtil.editChannel(channelObj).then((editedChannel) => {
     return dispatch(receiveChannel(editedChannel)) 
 // will use RECIEVE_CHANNEL because Object.assign will replace the pre-edited channel object in the frontend
   });
 };
 
-export const deleteChannel = (channelObj) => {
+export const deleteChannel = (channelObj) => (dispatch) => {
   return APIUtil.deleteChannel(channelObj).then( () => {
     return dispatch(clearChannel(channelObj))
   })

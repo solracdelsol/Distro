@@ -9,12 +9,12 @@ export const CLEAR_SERVER = "CLEAR_SERVER";
 // action creators
 
 const receiveServer = (server) => ({
-  type: RECIEVE_SERVER,
+  type: RECEIVE_SERVER,
   server,
 })
 
 const receiveServers = (servers) => ({
-  type: RECIEVE_SERVERS,
+  type: RECEIVE_SERVERS,
   servers
 })
 
@@ -46,25 +46,25 @@ export const createServer = (serverForm) => (dispatch) => {
   //, (errors) => dispatch(receiveServerErrors(errors))) // when adding for an errors slice of state
 };
 
-export const getServer = (serverObj) => {
+export const getServer = (serverObj) => (dispatch) =>{
   return APIUtil.getServer(serverObj).then((server) => {
      return dispatch(receiveServer(server))
     });
 };
 
-export const getServers = () => {
+export const getServers = () => (dispatch) =>{
   return APIUtil.getServers().then((servers) => {
      return dispatch(receiveServers(servers))
     });
 };
 
-export const patchServer = (serverObj) => {
+export const patchServer = (serverObj) => (dispatch) =>{
   return APIUtil.editServer(serverObj).then((editedServer) => {
     return dispatch(receiveServer(editedServer))
   });
 };
 
-export const deleteServer = (serverObj) => {
+export const deleteServer = (serverObj) => (dispatch) =>{
   return APIUtil.deleteServer(serverObj).then( () => {
     return dispatch(clearServer(serverObj))
   })

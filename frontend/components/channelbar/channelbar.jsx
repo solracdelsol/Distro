@@ -1,11 +1,28 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { getChannels } from "../../util/channel";
+import { getServers } from "../../util/server";
+// import { getChannels } from "../../util/channel";
 
 class ChannelBar extends React.Component {
   constructor(props) {
     super(props);
   }
+  
+ // START WORKING HERE
+
+  // generateServersAndChannels(){
+  //   // debugger
+  //   let servers = this.props.getServers();
+  //   // debugger
+  //   Object.values(servers).forEach( server => {
+  //     debugger
+  //     return getChannels(server)
+  //   })
+  //   // debugger
+
+  // }
 
   render() {
     return (

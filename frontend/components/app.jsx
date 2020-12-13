@@ -19,7 +19,7 @@ const App = () => (
       <AuthRoute exact path="/" component={LandingPageContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/register" component={SignUpFormContainer} />
-      <ProtectedRoute path='/channels/home' component={HomePageContainer} />
+      <ProtectedRoute path='/home' component={HomePageContainer} />
     </Switch>
   </div>
 );
@@ -28,4 +28,4 @@ export default App;
 
 //Auth -> login/signup
 //Protected -> anything involving being logged in
-//make these custom routes
+//make these custom routes here and route-util file
