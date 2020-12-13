@@ -10,12 +10,12 @@ class ChannelBar extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
-    // let serverObject = {"7":{"id":7,"serverTitle":"demo","hostId":8}}
-    this.props.getServers().then( (servers) => Object.values(servers.servers).forEach(server => { 
-      // debugger
-      return this.props.getChannels(server) }));
-  }
+  // componentDidMount(){
+  //   // let serverObject = {"7":{"id":7,"serverTitle":"demo","hostId":8}}
+  //   this.props.getServers().then( (servers) => Object.values(servers.servers).forEach(server => { 
+  //     // debugger
+  //     return this.props.getChannels(server) }));
+  // }
 
   render() {
     return (
