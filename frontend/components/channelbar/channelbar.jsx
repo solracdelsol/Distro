@@ -3,11 +3,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getChannels } from "../../util/channel";
 import { getServers } from "../../util/server";
+import ServerBar from "../serverbar/serverbar_container";
+
 // import { getChannels } from "../../util/channel";
 
 class ChannelBar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selected: "nothing selected",
+    }
+    // this.generateChannels = this.generateChannels.bind(this)
   }
 
   // componentDidMount(){
@@ -15,6 +21,11 @@ class ChannelBar extends React.Component {
   //   this.props.getServers().then( (servers) => Object.values(servers.servers).forEach(server => { 
   //     // debugger
   //     return this.props.getChannels(server) }));
+  // }
+
+  // generateChannels(){
+  //   this.setState({selected: this.props.selectedServer})
+  //   console.log(this.state.selected)
   // }
 
   render() {
@@ -25,7 +36,9 @@ class ChannelBar extends React.Component {
             These are the channels
             <li id="test">boom</li>
             <li id="test">boom2</li>
-            <li id="test">boom3</li>
+            <li id="test">{this.props.serverTitle}</li>
+            {/* {console.log(this.state.selected)} */}
+            {/* {generateChannels()} */}
           </div>
         <button id="test" onClick={this.props.logout}>Log Out</button>
         </div>

@@ -15,8 +15,8 @@ class HomePage extends React.Component {
       <div className="homepage-container">
         <div className="homepage">
         <ServerBar/>
-        <ChannelBar/>
-        <Messages/>
+        {/* <ChannelBar/> */}
+        {/* <Messages/> */}
         </div>
       </div>
     );
