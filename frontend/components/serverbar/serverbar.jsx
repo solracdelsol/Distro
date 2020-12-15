@@ -23,7 +23,7 @@ class ServerBar extends React.Component {
       return this.props.getChannels(server) }));
   }
 
-  //upon clicking
+  //step 3 -> upon clicking, parses the id={} of the server list element to recreate the server Object and set it as the "selected" key of the component's constructor state
   parseId(e){
     let parsed = e.currentTarget.id.split(",");
     return ({
@@ -33,17 +33,18 @@ class ServerBar extends React.Component {
     })
   }
 
+  //Step 2 -> setState is important to trigger a re-render of components
   handleClick(e){
     e.preventDefault();
     this.setState({selectedServer: this.parseId(e)})
-    debugger
+    // debugger
     console.log(`server switched to ${e.currentTarget.textContent}`)
     console.log(this.parseId(e));
   }
 
 
   render(){
-    // // debugger
+    // Step 1 -> generates a DOM element for every server in your Redux state thanks to mapStateToProps, they all have buttons to handleClick
     const serverList = () =>{
       let servers = [];
       Object.values(this.props.servers).forEach((server, idx) => {
@@ -53,20 +54,22 @@ class ServerBar extends React.Component {
     }
 
     const channelList = () => {
-      if(this.state.selectedServer){
-      return (<ChannelBar serverTitle={this.state.selectedServer.serverTitle} serverId={this.state.selectedServer.id} hostId={this.state.selectedServer.hostId}/>)
-      }
+      // if(this.state.selectedServer){
+      return (<ChannelBar serverTitle={!this.state.selectedServer ? "" : this.state.selectedServer.serverTitle} serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId}/>)
+      // }
     }
 
 
     const serverTemplate = () => (
+      <div className="homepage">
       <div className="server-bar-container">
         <div className="server-bar">
           <div className="server-list">These are the servers
             {serverList()}
-            {channelList()}
           </div>
         </div>
+      </div>
+      {channelList()}
       </div>
     )
     return serverTemplate();

@@ -26,13 +26,15 @@ class ChannelBar extends React.Component {
 
 
   generateChannels(){
-    let channels = []
-    Object.values(this.props.channels).forEach((channel, idx)=>{
-      if(channel.serverId === this.props.serverId){
-        channels.push(<li key={idx} id="test">{channel.channelTitle}</li>)
-      }
-    })
-    return channels
+    if(this.props.serverTitle !== ""){
+      let channels = []
+      Object.values(this.props.channels).forEach((channel, idx)=>{
+        if(channel.serverId === this.props.serverId){
+          channels.push(<li key={idx} id="test">{channel.channelTitle}</li>)
+        }
+      })
+      return channels
+    }
   }
 
   render() {
