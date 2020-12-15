@@ -13,7 +13,7 @@ class ChannelBar extends React.Component {
     this.state = {
       selected: "nothing selected",
     }
-    // this.generateChannels = this.generateChannels.bind(this)
+    this.generateChannels = this.generateChannels.bind(this)
   }
 
   // componentDidMount(){
@@ -23,27 +23,33 @@ class ChannelBar extends React.Component {
   //     return this.props.getChannels(server) }));
   // }
 
-  // generateChannels(){
-  //   this.setState({selected: this.props.selectedServer})
-  //   console.log(this.state.selected)
-  // }
+
+
+  generateChannels(){
+    let channels = []
+    Object.values(this.props.channels).forEach((channel, idx)=>{
+      if(channel.serverId === this.props.serverId){
+        channels.push(<li key={idx} id="test">{channel.channelTitle}</li>)
+      }
+    })
+    return channels
+  }
 
   render() {
-    return (
-      <div className="channel-bar-container">
+    
+    const channelsTemplate = () => {
+      return(<div className="channel-bar-container">
         <div className="channel-bar">
           <div className="channel-list">
-            These are the channels
-            <li id="test">boom</li>
-            <li id="test">boom2</li>
-            <li id="test">{this.props.serverTitle}</li>
-            {/* {console.log(this.state.selected)} */}
-            {/* {generateChannels()} */}
+            {this.props.serverTitle}
+            {this.generateChannels()}
           </div>
         <button id="test" onClick={this.props.logout}>Log Out</button>
         </div>
       </div>
-    );
+      )
+    }
+    return channelsTemplate()
   }
 }
 

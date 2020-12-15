@@ -54,7 +54,7 @@ class ServerBar extends React.Component {
 
     const channelList = () => {
       if(this.state.selectedServer){
-      return (<ChannelBar serverTitle={this.state.selectedServer.serverTitle} id={this.state.selectedServer.id} hostId={this.state.selectedServer.hostId}/>)
+      return (<ChannelBar serverTitle={this.state.selectedServer.serverTitle} serverId={this.state.selectedServer.id} hostId={this.state.selectedServer.hostId}/>)
       }
     }
 
