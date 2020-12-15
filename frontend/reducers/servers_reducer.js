@@ -1,4 +1,5 @@
 import {RECEIVE_SERVER, RECEIVE_SERVERS, CLEAR_SERVER} from '../actions/server';
+import {LOGOUT_CURRENT_USER} from "../actions/session"
 
 
 
@@ -20,6 +21,8 @@ const serversReducer = (state = {}, action) => {
     case CLEAR_SERVER:
       delete nextState[`${action.serverId}`]
       return nextState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

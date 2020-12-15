@@ -42,12 +42,14 @@ class ChannelBar extends React.Component {
     const channelsTemplate = () => {
       return(<div className="channel-bar-container">
         <div className="channel-bar">
-          <div className="channel-list">
             {this.props.serverTitle}
+
+          <div className="channel-list">
             {this.generateChannels()}
           </div>
-        <button id="test" onClick={this.props.logout}>Log Out</button>
         </div>
+        <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button>
+
       </div>
       )
     }

@@ -11,6 +11,7 @@ const msp = (state) => ({
 //state for serverbar will be housing icons that lead to these servers, as well as your home server
   servers: state.entities.servers,
   channels: state.entities.channels,
+  users: state.entities.users,
 });
 
 const mdp = (dispatch) => ({

@@ -19,20 +19,24 @@
 
     .channel-list{
       flex-direction: column;
-      justify-content: space-between;
-      height: inherit;
+      justify-content: space-around;
+      height: 400px;
       width: inherit;
       list-style-type: none;
       padding: 0;
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
       
       
 
 
     
     }
+
   }
+      // .btn-logout{
+      //   align-items: flex-end;
+      // }
 
  
 

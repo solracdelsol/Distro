@@ -1,4 +1,5 @@
 import {RECEIVE_CHANNEL, RECEIVE_CHANNELS, CLEAR_CHANNEL} from '../actions/channel';
+import {LOGOUT_CURRENT_USER} from "../actions/session"
 
 
 
@@ -20,6 +21,8 @@ const channelsReducer = (state = {}, action) => {
     case CLEAR_CHANNEL:
       delete nextState[`${action.channelId}`]
       return nextState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }
