@@ -44,8 +44,8 @@ class ServerBar extends React.Component {
 
 
   render(){
+    console.log(this.props.users.id)
     // debugger
-    // console.log(this.props.users.id)
 
 
 
@@ -60,13 +60,11 @@ class ServerBar extends React.Component {
     }
 
     const channelList = () => {
-      // if(this.state.selectedServer){
       return (<ChannelBar serverTitle={!this.state.selectedServer ? "" : this.state.selectedServer.serverTitle} serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId}/>)
-      // }
     }
 
     const displayUser = () => {
-      return (`Welcome ${Object.values(this.props.users.id)[0].username}`)
+      return (`Welcome ${Object.values(this.props.users.id)[0].username || Object.values(this.props.users)[0].username}`)
     }
 
 
