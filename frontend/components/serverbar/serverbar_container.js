@@ -7,8 +7,8 @@ import {createChannel, getChannel, getChannels, patchChannel, deleteChannel} fro
 
 // will also need to import the utils for the server fetches
 
-const msp = (state) => ({
 //state for serverbar will be housing icons that lead to these servers, as well as your home server
+const msp = (state) => ({
   servers: state.entities.servers,
   channels: state.entities.channels,
   users: state.entities.users,

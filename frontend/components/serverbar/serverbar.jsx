@@ -42,12 +42,13 @@ class ServerBar extends React.Component {
     console.log(this.parseId(e));
   }
 
-  shouldComponentUpdate(){
-    return !!this.props.users.id
-  }
-
 
   render(){
+    // debugger
+    // console.log(this.props.users.id)
+
+
+
     // Step 1 -> generates a DOM element for every server in your Redux state thanks to mapStateToProps, they all have buttons to handleClick
     const serverList = () =>{
       let servers = [];
@@ -64,12 +65,16 @@ class ServerBar extends React.Component {
       // }
     }
 
+    const displayUser = () => {
+      return (`Welcome ${Object.values(this.props.users.id)[0].username}`)
+    }
+
 
     const serverTemplate = () => (
       <div className="homepage">
       <div className="server-bar-container">
         <div className="server-bar">
-          <div className="server-list">{this.props.users.id ? `Welcome ${Object.values(this.props.users.id)[0].username}` : "" }
+          <div className="server-list">{displayUser()}
             {serverList()}
           </div>
         </div>
