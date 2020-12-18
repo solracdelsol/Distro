@@ -16,10 +16,10 @@ const receiveMessages = (messages) => ({
   messages,
 })
 
-// const clearChannel = (messageObj) => ({
-//   type: CLEAR_MESSAGES,
-//   messageId: messageObj.id, // needs to know which message needs to be cleared from frontend
-// })
+const clearMessages = (messageObj) => ({
+  type: CLEAR_MESSAGES,
+  messageId: messageObj.id, // needs to know which message needs to be cleared from frontend
+})
 
 //thunk action creators
 
