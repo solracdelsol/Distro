@@ -1,6 +1,6 @@
 class Api::ChannelsController < ApplicationController
 
-  skip_before_action :verify_authenticity_token #use this to not get error'd out when doing non-GET requests
+  skip_before_action :verify_authenticity_token #use this to not get error'd out when doing non-GET requests on POSTMAN
 
   def create
     @channel = Channel.new(channel_params)

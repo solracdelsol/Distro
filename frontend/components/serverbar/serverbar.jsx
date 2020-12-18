@@ -44,7 +44,7 @@ class ServerBar extends React.Component {
 
 
   render(){
-    console.log(this.props.users.id)
+    // console.log(this.props.users.id)
     // debugger
 
 

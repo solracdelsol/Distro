@@ -17,6 +17,8 @@ class User < ApplicationRecord
   through: :server_subscriptions,
   class_name: :Server
 
+  has_many :messages
+
   
   
 
