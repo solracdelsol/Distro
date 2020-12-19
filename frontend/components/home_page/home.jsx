@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ServerBar from "../serverbar/serverbar_container"
 import ChannelBar from "../channelbar/channelbar_container"
-import Messages from "../messages/messages_container"
+import MessageWindow from "../messages/messages_container"
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class HomePage extends React.Component {
         <div className="homepage">
         <ServerBar/>
         {/* <ChannelBar/> */}
-        {/* <Messages/> */}
+        {/* <MessageWindow/> */}
         </div>
       </div>
     );

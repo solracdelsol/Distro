@@ -16,15 +16,14 @@ const receiveMessages = (messages) => ({
   messages,
 })
 
-const clearMessages = (messageObj) => ({
+export const clearMessages = () => ({  // exporting just the action only until i need a destroy method
   type: CLEAR_MESSAGES,
-  messageId: messageObj.id, // needs to know which message needs to be cleared from frontend
 })
 
 //thunk action creators
 
 export const createMessage = (messageForm) => (dispatch) => {
-  return APIUtil.postMessage(messageForm).then( (message) => {
+  return APIUtil.createMessage(messageForm).then( (message) => {
     return dispatch(receiveMessage(message));
   }) //remove ) if you wanna add the errors below
   // , (errors) => dispatch(receiveServerErrors(errors)))

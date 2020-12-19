@@ -9,6 +9,7 @@ import { deleteSession } from "./util/session";
 import { createNewUser, login, logout } from "./actions/session";
 import { postServer, getServers, getServer, editServer, deleteServer } from "./util/server"
 import { postChannel, getChannels, getChannel, editChannel, deleteChannel } from "./util/channel"
+import {createMessage, getMessage, getMessages} from "./util/message"
 
 
 
@@ -28,6 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getChannel = getChannel
   window.editChannel = editChannel
   window.deleteChannel = deleteChannel
+
+  //test message jquery
+  window.createMessage = createMessage
+  window.getMessage = getMessage
+  window.getMessages = getMessages
 
   // window.postUser = postUser;
   // window.postSession = postSession;
