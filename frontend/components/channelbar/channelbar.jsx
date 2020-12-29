@@ -13,6 +13,7 @@ class ChannelBar extends React.Component {
     super(props);
     this.state = {
       selectedChannel: null,
+      // currentChannel: null,
     }
     this.generateChannels = this.generateChannels.bind(this)
     this.channelClick = this.channelClick.bind(this)
@@ -37,13 +38,31 @@ class ChannelBar extends React.Component {
 
   channelClick(e){
     e.preventDefault();
-    this.props.clearMessages();
-    this.setState({selectedChannel: this.parseId(e)})
-    let messageObject = {channelId: this.parseId(e).id};
-    this.props.getMessages(messageObject);
-    // debugger
-    console.log(`channel switched to ${e.currentTarget.textContent}`)
-    console.log(this.parseId(e));
+    let nextChannel = this.parseId(e);
+    if(!this.state.selectedChannel || this.state.selectedChannel !== nextChannel){ // When do i want it to trigger? when !selectedChannel or when the next channel will be different
+      this.props.clearMessages(); //clear state but also clear your message window, figure it out
+      while (document.getElementById("current-user-message")){
+        document.getElementById("current-user-message").remove()
+        document.getElementById("timestamp").remove()
+      }
+
+      while (document.getElementById("other-user-message")){
+        document.getElementById("other-user-message").remove()
+        document.getElementsById("timestamp").remove()
+      }
+
+      while(document.getElementById("chat-br")){
+        document.getElementById("chat-br").remove();
+      }
+
+      // debugger
+      this.setState({selectedChannel: this.parseId(e)})
+      let messageObject = {channelId: this.parseId(e).id};
+      this.props.getMessages(messageObject);
+      // debugger
+      console.log(`channel switched to ${e.currentTarget.textContent}`)
+      console.log(this.parseId(e));
+      }
   }
   
 

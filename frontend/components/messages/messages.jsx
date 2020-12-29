@@ -5,6 +5,10 @@ class MessageWindow extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {messageInput: "" };
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
   parseTime(time){
@@ -34,6 +38,24 @@ class MessageWindow extends React.Component {
     return timeFormat;
   }
 
+  handleChange(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({messageInput: e.currentTarget.value});
+    console.log(e.currentTarget.value)
+  }
+
+  handleSubmit(e){
+    e.stopPropagation();
+    e.preventDefault();
+    // let messageForm = { message:{ body: this.state.messageInput , user_id: this.props.userId , channel_id: this.props.channelId } }
+    // // let getmessageObject = {channelId = this.props.channelId}
+    // this.props.createMessage(messageForm)
+    // return console.log("message sent")
+    console.log(`message sent: ${e.currentTarget.value}`)
+    // debugger
+  }
+
   render() {
 
     const formatMessages = () => { 
@@ -55,6 +77,8 @@ class MessageWindow extends React.Component {
         parent.appendChild(messageNode)
         
         let br = document.createElement("br")
+        br.setAttribute("id", "chat-br")
+        // debugger
         return parent.appendChild(br)
          
       })
@@ -65,12 +89,15 @@ class MessageWindow extends React.Component {
         <div id="messages">
           <div id="message-window-title">{this.props.channelTitle}</div>
            <div id="message-window-interface">
-            {formatMessages()}
+            {formatMessages()} 
+            {/*IMPORTANT, CONSIDER MAKING A FRIENDS TABLE IN THE BACKEND FOR CONVENIENT CHAT USERNAME RENDERING, FOR FUTURE BUILD THOUGH */}
            </div>
-          
-          <button onClick={formatMessages}>Press me</button> {/*This will be the button to input chat*/}
-          
-          
+
+          <form >
+          <input type="text" value={this.state.messageInput} onChange={this.handleChange} />
+          <button value={this.state.messageInput} onClick={this.handleSubmit}>Send</button>
+          </form>
+
           
         </div>
       </div>

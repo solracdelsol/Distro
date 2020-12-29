@@ -11,6 +11,8 @@ import {createMessage, getMessages, getMessage, clearMessages} from "../../actio
 const msp = (state) => ({
   channels: state.entities.channels,
   servers: state.entities.servers,
+  messages: state.entities.messages,
+  currentUser: state.entities.users.id,
   //state for serverbar will be housing icons that lead to these servers, as well as your home server
 });
 
