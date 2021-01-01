@@ -11,7 +11,7 @@ class ServerBar extends React.Component {
       selectedServer: null,
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.serverClick = this.serverClick.bind(this);
     this.parseId = this.parseId.bind(this);
   }
 
@@ -34,8 +34,23 @@ class ServerBar extends React.Component {
   }
 
   //Step 2 -> setState is important to trigger a re-render of components
-  handleClick(e){
+  serverClick(e){
     e.preventDefault();
+
+    while (document.getElementById("current-user-message")){
+      document.getElementById("current-user-message").remove()
+      document.getElementById("timestamp").remove()
+    }
+
+    while (document.getElementById("other-user-message")){
+      document.getElementById("other-user-message").remove()
+      document.getElementsById("timestamp").remove()
+    }
+
+    while(document.getElementById("chat-br")){
+      document.getElementById("chat-br").remove();
+    }
+    
     this.setState({selectedServer: this.parseId(e)})
     // debugger
     console.log(`server switched to ${e.currentTarget.textContent}`)
@@ -49,11 +64,11 @@ class ServerBar extends React.Component {
 
 
 
-    // Step 1 -> generates a DOM element for every server in your Redux state thanks to mapStateToProps, they all have buttons to handleClick
+    // Step 1 -> generates a DOM element for every server in your Redux state thanks to mapStateToProps, they all have buttons to serverClick
     const serverList = () =>{
       let servers = [];
       Object.values(this.props.servers).forEach((server, idx) => {
-        return servers.push( <li key={idx} id={Object.entries(server)} onClick={(e) => this.handleClick(e)}>{server.serverTitle}</li> )
+        return servers.push( <li key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</li> )
       })
       servers.push(<button key={"createServer"}>Create a Server</button>)
       return servers

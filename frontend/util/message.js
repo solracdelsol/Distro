@@ -1,6 +1,6 @@
 export const createMessage = (formData) =>( //take channelId straight from formData instead of adding a serverId as a second argument 
   $.ajax({
-    url: `/api/channels/${formData.channelId}/messages`,
+    url: `/api/channels/${formData.message.channel_id}/messages`,
     method: "POST",
     data: formData
   })

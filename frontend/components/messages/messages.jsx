@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class MessageWindow extends React.Component {
+class MessageWindow extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {messageInput: "" };
+    // this.state = {messageInput: "" };
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this);
@@ -41,18 +41,39 @@ class MessageWindow extends React.Component {
   handleChange(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.setState({messageInput: e.currentTarget.value});
+    // this.setState({messageInput: e.currentTarget.value});
     console.log(e.currentTarget.value)
   }
 
   handleSubmit(e){
     e.stopPropagation();
     e.preventDefault();
-    // let messageForm = { message:{ body: this.state.messageInput , user_id: this.props.userId , channel_id: this.props.channelId } }
-    // // let getmessageObject = {channelId = this.props.channelId}
-    // this.props.createMessage(messageForm)
-    // return console.log("message sent")
-    console.log(`message sent: ${e.currentTarget.value}`)
+
+    while (document.getElementById("current-user-message")){
+      document.getElementById("current-user-message").remove()
+      document.getElementById("timestamp").remove()
+    }
+
+    while (document.getElementById("other-user-message")){
+      document.getElementById("other-user-message").remove()
+      document.getElementsById("timestamp").remove()
+    }
+
+    while(document.getElementById("chat-br")){
+      document.getElementById("chat-br").remove();
+    }
+
+
+    let message = document.getElementById("message-input").value
+    // debugger
+    let messageForm = { message:{ body: message , user_id: this.props.currentUser.id , channel_id: this.props.channelId } }
+    // let getmessageObject = {channelId = this.props.channelId}
+    this.props.createMessage(messageForm)
+
+    console.log(`message sent: ${message}`)
+    
+    return document.getElementById("message-input").value = ""
+
     // debugger
   }
 
@@ -94,8 +115,9 @@ class MessageWindow extends React.Component {
            </div>
 
           <form >
-          <input type="text" value={this.state.messageInput} onChange={this.handleChange} />
-          <button value={this.state.messageInput} onClick={this.handleSubmit}>Send</button>
+          <input type="text" id="message-input" onChange={this.handleChange} placeholder={`Message #${this.props.channelTitle}`}/>
+          <button  onClick={this.handleSubmit}>Send</button>
+          {/* value={this.state.messageInput} may have to put on input and button just in case */}
           </form>
 
           
