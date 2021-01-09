@@ -45,6 +45,8 @@ class MessageWindow extends React.PureComponent {
     console.log(e.currentTarget.value)
   }
 
+
+
   handleSubmit(e){
     e.stopPropagation();
     e.preventDefault();
@@ -72,15 +74,15 @@ class MessageWindow extends React.PureComponent {
 
     console.log(`message sent: ${message}`)
 
+
     return document.getElementById("message-input").value = ""
 
-    // debugger
   }
 
   render() {
 
     const formatMessages = () => { 
-      Object.values(this.props.messages).forEach((message, idx) => {
+      Object.values(this.props.messages).reverse().forEach((message, idx) => {
         let parent = document.getElementById("message-window-interface")
 
         let messageNode = document.createElement("div")
@@ -94,8 +96,8 @@ class MessageWindow extends React.PureComponent {
         messageNode.appendChild(text)
         messageNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
 
-        parent.appendChild(timeNode)
         parent.appendChild(messageNode)
+        parent.appendChild(timeNode)
         
         let br = document.createElement("br")
         br.setAttribute("id", "chat-br")

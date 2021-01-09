@@ -11,12 +11,17 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-bottom: 25px;
+    // padding-bottom: 25px;
 
     #messages {
       #message-window-interface{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        // overflow: auto;
+        overflow: auto;
+        height: 90vh;
+        padding-right: 15px;
+        
         #current-user-message{
           align-self: flex-end;
         }

@@ -39,18 +39,18 @@ class ServerBar extends React.Component {
 
     while (document.getElementById("current-user-message")){
       document.getElementById("current-user-message").remove()
-      document.getElementById("timestamp").remove()
+      // document.getElementById("timestamp").remove()
     }
 
     while (document.getElementById("other-user-message")){
       document.getElementById("other-user-message").remove()
-      document.getElementsById("timestamp").remove()
+      // document.getElementsById("timestamp").remove()
     }
 
     while(document.getElementById("chat-br")){
       document.getElementById("chat-br").remove();
     }
-    
+
     this.setState({selectedServer: this.parseId(e)})
     // debugger
     console.log(`server switched to ${e.currentTarget.textContent}`)

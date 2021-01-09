@@ -20,12 +20,25 @@ class ChannelBar extends React.Component {
     this.parseId = this.parseId.bind(this)
   }
 
-  // componentDidUpdate(prevProps,prevState) {
-  //   // Typical usage (don't forget to compare props):
-  //   if (this.props.serverId !== prevProps.serverId ) {
-  //     return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
-  //   }
-  // }
+  componentDidUpdate(prevProps,prevState) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.serverId !== prevProps.serverId ) {
+      (this.setState({selectedChannel: null}))
+      this.props.clearMessages();
+      while (document.getElementById("current-user-message")){
+        document.getElementById("current-user-message").remove()
+        // document.getElementById("timestamp").remove()
+      }
+      while (document.getElementById("other-user-message")){
+        document.getElementById("other-user-message").remove()
+        // document.getElementsById("timestamp").remove()
+      }
+
+      while(document.getElementById("chat-br")){
+        document.getElementById("chat-br").remove();
+      }
+    }
+  }
 
   parseId(e){
     let parsed = e.currentTarget.id.split(",");
@@ -35,6 +48,7 @@ class ChannelBar extends React.Component {
       [`${parsed[4]}`]: parseInt(parsed[5]), //serverId: 7
     })
   }
+
 
   channelClick(e){
     e.preventDefault();
@@ -62,7 +76,8 @@ class ChannelBar extends React.Component {
       // debugger
       console.log(`channel switched to ${e.currentTarget.textContent}`)
       console.log(this.parseId(e));
-      }
+
+    }
   }
   
 
