@@ -85,7 +85,7 @@ class MessageWindow extends React.PureComponent {
 
         let messageNode = document.createElement("div")
         let timeNode = document.createElement("div")
-        let time = document.createTextNode(this.parseTime(message.timestamp))
+        let time = document.createTextNode(`${message.userName} ${this.parseTime(message.timestamp)}`)
         let text = document.createTextNode(message.body)
         
 
