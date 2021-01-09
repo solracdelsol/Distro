@@ -29,10 +29,10 @@ class MessageWindow extends React.PureComponent {
       else{ // im parsing the day-clock
         let clockParse = timeUnit.split("."); //01:44:17.835Z
         let clockUnit = clockParse[0].split(":");
-        let hour = clockUnit[0];
+        let hour = parseInt(clockUnit[0]) - (d.getTimezoneOffset() / 60)
         let min = clockUnit[1];
         // let sec = clockUnit[2]; // would be cumbersome to include seconds
-        return ( d.toISOString().split("T")[0] === time.split("T")[0] ? timeFormat += ([(String(parseInt(hour)%12)),min].join(":")) + (parseInt(hour) >= 12 ? "PM" : "AM") : "" );
+        return ( d.toISOString().split("T")[0] === time.split("T")[0] ? timeFormat += ([(String(parseInt(hour)%12 === 0 ? "12" : String(parseInt(hour)%12))),min].join(":")) + (parseInt(hour) >= 12 ? "PM" : "AM") : "" );
       }
     })
     return timeFormat;
@@ -51,12 +51,12 @@ class MessageWindow extends React.PureComponent {
 
     while (document.getElementById("current-user-message")){
       document.getElementById("current-user-message").remove()
-      document.getElementById("timestamp").remove()
+      // document.getElementById("timestamp").remove()
     }
 
     while (document.getElementById("other-user-message")){
       document.getElementById("other-user-message").remove()
-      document.getElementsById("timestamp").remove()
+      // document.getElementById("timestamp").remove()
     }
 
     while(document.getElementById("chat-br")){
@@ -90,7 +90,7 @@ class MessageWindow extends React.PureComponent {
         
 
         timeNode.appendChild(time)
-        timeNode.setAttribute("id", "timestamp")
+        timeNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
         messageNode.appendChild(text)
         messageNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
 

@@ -43,12 +43,12 @@ class ChannelBar extends React.Component {
       this.props.clearMessages(); //clear state but also clear your message window, figure it out
       while (document.getElementById("current-user-message")){
         document.getElementById("current-user-message").remove()
-        document.getElementById("timestamp").remove()
+        // document.getElementById("timestamp").remove()
       }
 
       while (document.getElementById("other-user-message")){
         document.getElementById("other-user-message").remove()
-        document.getElementsById("timestamp").remove()
+        // document.getElementsById("timestamp").remove()
       }
 
       while(document.getElementById("chat-br")){
