@@ -20,11 +20,11 @@ class ChannelBar extends React.Component {
     this.parseId = this.parseId.bind(this)
   }
 
-  // componentDidMount(){
-  //   // let serverObject = {"7":{"id":7,"serverTitle":"demo","hostId":8}}
-  //   this.props.getServers().then( (servers) => Object.values(servers.servers).forEach(server => { 
-  //     // debugger
-  //     return this.props.getChannels(server) }));
+  // componentDidUpdate(prevProps,prevState) {
+  //   // Typical usage (don't forget to compare props):
+  //   if (this.props.serverId !== prevProps.serverId ) {
+  //     return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
+  //   }
   // }
 
   parseId(e){

@@ -1,9 +1,47 @@
 .messages-container{
-  // height: 500px;
+  height: 100vh;
   width: 872px;
   display: flex;
+  flex-direction: column;
+  // justify-content: flex-end;
   
-  .messages{
+  #messages-and-form-container{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 25px;
+
+    #messages {
+      #message-window-interface{
+        display: flex;
+        flex-direction: column;
+        #current-user-message{
+          align-self: flex-end;
+        }
+        #other-user-message{
+          align-self: flex-start;
+        }
+        #timestamp{
+          align-self: center;
+        }
+      }
+
+    }
+    
+    #messageForm {
+
+      #message-input{
+        width: 800px;
+        height: 44px;
+      }
+
+      #message-send{
+        height: 50px;
+      }
+    }
+
   }
 }
 

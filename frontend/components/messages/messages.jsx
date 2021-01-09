@@ -71,7 +71,7 @@ class MessageWindow extends React.PureComponent {
     this.props.createMessage(messageForm)
 
     console.log(`message sent: ${message}`)
-    
+
     return document.getElementById("message-input").value = ""
 
     // debugger
@@ -107,21 +107,25 @@ class MessageWindow extends React.PureComponent {
 
     return (
       <div className="messages-container">
-        <div id="messages">
-          <div id="message-window-title">{this.props.channelTitle}</div>
-           <div id="message-window-interface">
-            {formatMessages()} 
-            {/*IMPORTANT, CONSIDER MAKING A FRIENDS TABLE IN THE BACKEND FOR CONVENIENT CHAT USERNAME RENDERING, FOR FUTURE BUILD THOUGH */}
-           </div>
+          <div id="message-window-title">{this.props.channelTitle} </div>
+          <div id="messages-and-form-container">
+            <div id="messages">
+              <div id="message-window-interface">
+                {formatMessages()} 
+                {/*IMPORTANT, CONSIDER MAKING A FRIENDS TABLE IN THE BACKEND FOR CONVENIENT CHAT USERNAME RENDERING, FOR FUTURE BUILD THOUGH */}
+              </div>
+            </div>
 
-          <form >
-          <input type="text" id="message-input" onChange={this.handleChange} placeholder={`Message #${this.props.channelTitle}`}/>
-          <button  onClick={this.handleSubmit}>Send</button>
-          {/* value={this.state.messageInput} may have to put on input and button just in case */}
-          </form>
 
-          
+            {/* value={this.state.messageInput} may have to put on input and button just in case */}
+            
+        
+            {this.props.channelTitle ? <form id="messageForm" >
+            <input type="text" id="message-input" onChange={this.handleChange} placeholder={`Message #${this.props.channelTitle}`}/>
+            <button id="message-send" onClick={this.handleSubmit}>Send</button>
+            </form> : null}
         </div>
+
       </div>
     );
   }
