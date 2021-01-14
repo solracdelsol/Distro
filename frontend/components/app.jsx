@@ -7,6 +7,7 @@ import SignUpFormContainer from './signup/signup_container';
 import LoginFormContainer from './login/login_form_container';
 import HomePageContainer from './home_page/home_container'
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import Modal from "./modal/modal"
 
 
 {/* APP.JSX IS NORMALLY WHERE YOU WANT TO DUMP ALL YOUR COMPONENTS, THIS IS THE MAIN CONTAINER AREA */}
@@ -15,6 +16,8 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
 const App = () => (
   <div>
+    <Modal/>
+    
     <Switch>
       <AuthRoute exact path="/" component={LandingPageContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />

@@ -12,7 +12,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def index
-    @messages = Channel.find_by( id: params[:channel_id]).messages
+    @messages = Channel.find_by( id: params[:channel_id]).messages.last(50) #capping at 50 messages to not brick my project frontend
 
     render "api/messages/index"
   end

@@ -32,7 +32,8 @@ class MessageWindow extends React.PureComponent {
         let hour = parseInt(clockUnit[0]) - (d.getTimezoneOffset() / 60)
         let min = clockUnit[1];
         // let sec = clockUnit[2]; // would be cumbersome to include seconds
-        return ( d.toISOString().split("T")[0] === time.split("T")[0] ? timeFormat += ([(String(parseInt(hour)%12 === 0 ? "12" : String(parseInt(hour)%12))),min].join(":")) + (parseInt(hour) >= 12 ? "PM" : "AM") : "" );
+        return ( d.toISOString().split("T")[0] === time.split("T")[0] ? timeFormat += ([(String(parseInt(hour)%12 === 0 ?
+           "12" : String(parseInt(hour)%12))),min].join(":")) + (parseInt(hour) >= 12 ? "PM" : "AM") : "" );
       }
     })
     return timeFormat;
@@ -101,7 +102,6 @@ class MessageWindow extends React.PureComponent {
         
         let br = document.createElement("br")
         br.setAttribute("id", "chat-br")
-        // debugger
         return parent.appendChild(br)
          
       })

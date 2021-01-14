@@ -1,0 +1,31 @@
+.modal-background {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  min-height: 620px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.70);
+}
+
+.modal-child {
+  position: relative;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  // min-height: 600px;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid black;
+  background-image: linear-gradient(to left, #249ea0, #008083, #005f60);
+  /* background-image: url('../../images/modal-background.jpg'); */
+  background-size: contain;
+  border-radius: 150px;
+
+}
+.create-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

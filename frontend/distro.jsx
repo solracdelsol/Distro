@@ -10,11 +10,15 @@ import { createNewUser, login, logout } from "./actions/session";
 import { postServer, getServers, getServer, editServer, deleteServer } from "./util/server"
 import { postChannel, getChannels, getChannel, editChannel, deleteChannel } from "./util/channel"
 import {createMessage, getMessage, getMessages} from "./util/message"
+import {openModal, closeModal} from "./actions/modal"
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
+
+  window.openModal = openModal
+  window.closeModal = closeModal
   
   //test server jquery
   window.postServer = postServer
@@ -60,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore(preloadedState);
 
   window.getState = store.getState;
-  // window.dispatch = store.dispatch; 
+  window.dispatch = store.dispatch; 
     // Clean up after ourselves so we don't accidentally use the
     // global currentUser instead of the one in the store
     // delete window.currentUser;

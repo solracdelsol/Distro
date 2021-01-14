@@ -18,12 +18,14 @@ class ApplicationController < ActionController::Base
   def login(user)
     user.reset_session_token!
     session[:session_token] = user.session_token
+    # cookies.signed[:user_id] = user.id ## ADDED THESE FOR ACTIONCABLE REVIEW THIS
     @current_user = user
   end
 
   def logout
     current_user.reset_session_token!
     session[:session_token] = nil
+    # cookies.delete(:user_id) ##
     @current_user = nil
   end
 
