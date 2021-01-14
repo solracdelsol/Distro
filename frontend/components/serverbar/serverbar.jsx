@@ -35,7 +35,7 @@ class ServerBar extends React.Component {
 
   //Step 2 -> setState is important to trigger a re-render of components
   serverClick(e){
-    e.preventDefault();
+    // e.preventDefault();
 
     while (document.getElementById("current-user-message")){
       document.getElementById("current-user-message").remove()
@@ -68,7 +68,7 @@ class ServerBar extends React.Component {
     const serverList = () =>{
       let servers = [];
       Object.values(this.props.servers).forEach((server, idx) => {
-        return servers.push( <li key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</li> )
+        return servers.push( <Link to={`/channels/${server.id}`} key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</Link> )
       })
       servers.push(<button onClick={() => this.props.openModal("Create Server")} key={"createServer"}>Create a Server</button>)
       return servers

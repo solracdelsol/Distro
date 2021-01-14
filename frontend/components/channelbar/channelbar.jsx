@@ -15,7 +15,7 @@ class ChannelBar extends React.Component {
       selectedChannel: null,
       // currentChannel: null,
     }
-    this.generateChannels = this.generateChannels.bind(this)
+    // this.generateChannels = this.generateChannels.bind(this)
     this.channelClick = this.channelClick.bind(this)
     this.parseId = this.parseId.bind(this)
   }
@@ -53,7 +53,7 @@ class ChannelBar extends React.Component {
 
 
   channelClick(e){
-    e.preventDefault();
+    // e.preventDefault();
     let nextChannel = this.parseId(e);
     if(!this.state.selectedChannel || this.state.selectedChannel !== nextChannel){ // When do i want it to trigger? when !selectedChannel or when the next channel will be different
       this.props.clearMessages(); //clear state but also clear your message window, figure it out
@@ -82,21 +82,22 @@ class ChannelBar extends React.Component {
     }
   }
   
-
-  generateChannels(){
-    if(this.props.serverTitle !== ""){
-      let channels = []
-      Object.values(this.props.channels).forEach((channel, idx)=>{
-        if(channel.serverId === this.props.serverId){
-        channels.push(<li key={idx} id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</li>)
-        }
-      })
-      channels.push(<button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button>)
-      return channels;
-    }
-  };
-
+  
   render(){
+    
+    const generateChannels = () => {
+      if(this.props.serverTitle !== ""){
+        let channels = []
+        Object.values(this.props.channels).forEach((channel, idx)=>{
+          if(channel.serverId === this.props.serverId){
+          channels.push(<Link to={`/channels/${channel.serverId}/${channel.id}`} key={idx} id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</Link>)
+          }
+        })
+        channels.push(<button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button>)
+        return channels;
+      }
+    };
+
 
     const chatWindow = () => {
       return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
@@ -110,7 +111,7 @@ class ChannelBar extends React.Component {
                 {this.props.serverTitle}
 
               <div id="channel-list" className="channel-list">
-                {this.generateChannels()}
+                {generateChannels()}
               </div>
             </div>
             <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button>
