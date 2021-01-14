@@ -25,12 +25,18 @@ class CreateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    //   .then(this.props.closeModal())
-    const form = Object.assign({}, this.state);
+    let processIdObject;
+
+    if(this.props.formType === "Create Server"){
+      processIdObject = { server: {server_title:this.state.unitTitle , host_id: this.props.processId} }
+    }
+    if(this.props.formType === "Create Channel"){
+      processIdObject = { channel: {ch_title: this.state.ch_title , server_id: this.props.processId} }
+    }
+
+    let form = Object.assign({}, processIdObject);
     this.props.processForm(form).then(() => {
-      if (this.props.formType === "Create Server") {
-        return this.props.openModal("Create Server");
-      }
+      return this.props.closeModal();
     });
   }
 

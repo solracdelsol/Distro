@@ -6,6 +6,7 @@ import CreateForm from "./create_form";
 
 const msp = (state) => ({ 
   formType: "Create Server",
+  processId: state.session.id
 });
 
 const mdp = (dispatch) => ({

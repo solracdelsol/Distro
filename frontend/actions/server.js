@@ -1,5 +1,6 @@
 // import { getServer, getServers, postServer, editServer, deleteServer } from "../util/server"
 import * as APIUtil from "../util/server"
+import {getChannels} from "./channel"
 
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
@@ -41,8 +42,8 @@ const clearServer = (serverObj) => ({
 
 export const createServer = (serverForm) => (dispatch) => {
   return APIUtil.postServer(serverForm).then( (server) => {
-    return dispatch(recieveServer(server));
-  });
+    return dispatch(receiveServer(server))
+  }).then((serverAction) => {debugger; return getChannels(serverAction.server)}); /////////////
   //, (errors) => dispatch(receiveServerErrors(errors))) // when adding for an errors slice of state
 };
 

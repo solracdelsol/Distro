@@ -12,7 +12,7 @@ class Api::ServersController < ApplicationController
       channel.save!
 
       @servers = current_user.servers #we create an @servers variable available because that's the variable we want to access for the jbuilder api views
-      render "api/servers/index"
+      render "api/servers/show"
     else
       render json: ["Unable to process your request"], status: 404
     end
