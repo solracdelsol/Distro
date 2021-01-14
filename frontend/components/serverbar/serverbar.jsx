@@ -70,7 +70,7 @@ class ServerBar extends React.Component {
       Object.values(this.props.servers).forEach((server, idx) => {
         return servers.push( <li key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</li> )
       })
-      servers.push(<button key={"createServer"}>Create a Server</button>)
+      servers.push(<button onClick={() => this.props.openModal("Create Server")} key={"createServer"}>Create a Server</button>)
       return servers
     }
 

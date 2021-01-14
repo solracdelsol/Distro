@@ -5,6 +5,7 @@ import ChannelBar from "./channelbar.jsx";
 
 import {createServer, getServer, getServers, patchServer, deleteServer} from "../../actions/server"
 import {createMessage, getMessages, getMessage, clearMessages} from "../../actions/message"
+import {openModal, closeModal} from "../../actions/modal"
 
 // will also need to import the utils for the server fetches
 
@@ -35,6 +36,9 @@ const mdp = (dispatch) => ({
   getMessage: (messageObj) => dispatch(getMessage(messageObj)),
   getMessages: (messageObj) => dispatch(getMessages(messageObj)),
   clearMessages: () => dispatch(clearMessages()),
+
+  closeModal: () => dispatch(closeModal()),
+  openModal: (modal) => dispatch(openModal(modal)),
 });
 export default connect(msp, mdp)(ChannelBar);
 

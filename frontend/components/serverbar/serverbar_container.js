@@ -5,6 +5,8 @@ import {createServer, getServer, getServers, patchServer, deleteServer} from "..
 
 import {createChannel, getChannel, getChannels, patchChannel, deleteChannel} from "../../actions/channel";
 
+import {openModal, closeModal} from "../../actions/modal"
+
 // will also need to import the utils for the server fetches
 
 //state for serverbar will be housing icons that lead to these servers, as well as your home server
@@ -26,6 +28,11 @@ const mdp = (dispatch) => ({
   getChannels: (serverObj) => dispatch(getChannels(serverObj)),
   patchChannel: (channelObj) => dispatch(patchChannel(channelObj)),
   deleteChannel: (channelObj) => dispatch(deleteChannel(channelObj)),
+
+  openModal: (modal) => dispatch(openModal(modal)),
+  closeModal: () => dispatch(closeModal()),
+
+
 // dispatches to generate channels for that server
 });
 export default connect(msp, mdp)(ServerBar);

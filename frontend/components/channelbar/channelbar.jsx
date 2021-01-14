@@ -23,6 +23,8 @@ class ChannelBar extends React.Component {
   componentDidUpdate(prevProps,prevState) {
     // Typical usage (don't forget to compare props):
     if (this.props.serverId !== prevProps.serverId ) {
+      let serverObj = {id: this.props.serverId} //
+      this.props.getChannels(serverObj);  // THESE TWO LINES ARE IMPORTANT TO RERENDER AFTER SERVER CREATION
       (this.setState({selectedChannel: null}))
       this.props.clearMessages();
       while (document.getElementById("current-user-message")){
@@ -89,6 +91,7 @@ class ChannelBar extends React.Component {
         channels.push(<li key={idx} id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</li>)
         }
       })
+      channels.push(<button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button>)
       return channels;
     }
   };
@@ -106,7 +109,7 @@ class ChannelBar extends React.Component {
             <div className="channel-bar">
                 {this.props.serverTitle}
 
-              <div className="channel-list">
+              <div id="channel-list" className="channel-list">
                 {this.generateChannels()}
               </div>
             </div>

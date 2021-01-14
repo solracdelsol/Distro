@@ -9,7 +9,7 @@ export const EDIT_CHANNEL = "EDIT_CHANNEL";
 // action creators
 
 const receiveChannel = (channel) => ({
-  type: RECIEVE_CHANNEL,
+  type: RECEIVE_CHANNEL,
   channel,
 })
 

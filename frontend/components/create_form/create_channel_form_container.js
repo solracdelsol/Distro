@@ -9,7 +9,7 @@ const msp = (state) => ({
 });
 
 const mdp = (dispatch) => ({
-  processForm: (channelForm) => dispatch(createChannel(channelForm)), // make sure to dispatch createChannel here EDIT THIS
+  processForm: (channelForm) => dispatch(createChannel(channelForm)),
   closeModal: () => dispatch(closeModal()),
   openModal: (modal) => dispatch(openModal(modal)),
 });

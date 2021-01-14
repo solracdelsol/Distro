@@ -1,6 +1,6 @@
 export const postChannel = (formData) =>( //take serverId straight from formData instead of adding a serverId as a second argument 
   $.ajax({
-    url: `/api/servers/${formData.serverId}/channels`,
+    url: `/api/servers/${formData.channel.server_id}/channels`,
     method: "POST",
     data: formData
   })
