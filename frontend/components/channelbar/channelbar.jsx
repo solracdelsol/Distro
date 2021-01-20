@@ -1,10 +1,11 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { getChannels } from "../../util/channel";
 import { getServers } from "../../util/server";
 import ServerBar from "../serverbar/serverbar_container";
 import MessageWindow from "../messages/messages_container";
+
 
 // import { getChannels } from "../../util/channel";
 
@@ -40,6 +41,12 @@ class ChannelBar extends React.Component {
         document.getElementById("chat-br").remove();
       }
     }
+  }
+
+  componentDidMount(){
+    debugger
+    let serverObj = {id: this.props.serverId}
+    this.props.getChannels(serverObj);
   }
 
   parseId(e){
@@ -124,4 +131,4 @@ class ChannelBar extends React.Component {
   }
 }
 
-export default ChannelBar;
+export default ChannelBar //withRouter(ChannelBar);

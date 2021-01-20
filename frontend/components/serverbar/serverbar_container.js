@@ -7,6 +7,8 @@ import {createChannel, getChannel, getChannels, patchChannel, deleteChannel} fro
 
 import {openModal, closeModal} from "../../actions/modal"
 
+import { withRouter } from "react-router";
+
 // will also need to import the utils for the server fetches
 
 //state for serverbar will be housing icons that lead to these servers, as well as your home server
@@ -35,6 +37,6 @@ const mdp = (dispatch) => ({
 
 // dispatches to generate channels for that server
 });
-export default connect(msp, mdp)(ServerBar);
+export default withRouter(connect(msp, mdp)(ServerBar))
 
 // this component will render in the home.jsx file

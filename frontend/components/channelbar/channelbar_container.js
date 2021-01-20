@@ -7,9 +7,11 @@ import {createServer, getServer, getServers, patchServer, deleteServer} from "..
 import {createMessage, getMessages, getMessage, clearMessages} from "../../actions/message"
 import {openModal, closeModal} from "../../actions/modal"
 
+import { withRouter } from "react-router";
+
 // will also need to import the utils for the server fetches
 
-const msp = (state) => ({
+const msp = (state,ownProps) => ({
   channels: state.entities.channels,
   servers: state.entities.servers,
   messages: state.entities.messages,
@@ -40,6 +42,6 @@ const mdp = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
   openModal: (modal) => dispatch(openModal(modal)),
 });
-export default connect(msp, mdp)(ChannelBar);
+export default withRouter(connect(msp, mdp)(ChannelBar));
 
 // this component will render in the home.jsx file

@@ -21,7 +21,6 @@ class CreateForm extends React.Component {
   //   this.props.clearErrors();
   // }
 
-  //IF NO ERRORS, SHOULD CLOSE MODAL, KEEP OPEN IF ERROR
   handleSubmit(e) {
     e.preventDefault();
 
