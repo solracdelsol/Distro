@@ -9,12 +9,12 @@ class User < ApplicationRecord
   foreign_key: :host_id,
   class_name: :Server
 
-  has_many :server_subscriptions,
+  has_many :subscriptions,
   foreign_key: :user_id,
   class_name: :Subscription
 
   has_many :servers,
-  through: :server_subscriptions,
+  through: :subscriptions,
   class_name: :Server
 
   has_many :messages

@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import React from "react";
 import { createChannel } from "../../actions/channel"
 import { openModal, closeModal } from "../../actions/modal";
 import CreateForm from "./create_form";

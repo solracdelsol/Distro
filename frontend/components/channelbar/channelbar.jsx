@@ -43,10 +43,7 @@ class ChannelBar extends React.Component {
     }
   }
 
-  componentDidMount(){
-    debugger
-    let serverObj = {id: this.props.serverId}
-    this.props.getChannels(serverObj);
+  componentDidMount(){  // TODO -> WHEN COMPONENT MOUNTS, SET IT TO RENDER VIA URL INFORMATION URL stuff || threaded props
   }
 
   parseId(e){
