@@ -22,7 +22,7 @@ ActiveRecord::Base.transaction do
   demo_server3 = Server.create!(server_title: 'demo3', host_id: User.find(1).id)
 
   Server.all.each do |server|
-    Channel.create!(server_id: server.id, channel_title: "General")
+    Channel.create!(server_id: server.id, ch_title: "General")
     User.all.each do |user|
       Subscription.create!(user_id: user.id , server_id: server.id)
     end
