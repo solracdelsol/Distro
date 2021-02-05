@@ -32,4 +32,4 @@ export const createSubscription = (subscribeObj) => (dispatch) => (
 // export const queryServers = (serverTitleQuery) => (dispatch) => (
 //   APIUtil.queryServers(serverTitleQuery).then((queryResults)=>(dispatch())
 
-//THINGS TO DO: BUILD OUT SEARCH AND SUBSCRIPTIONS AS SEPARATE FEATURES
+//THINGS TO DO: BUILD OUT SEARCH AND SUBSCRIPTIONS AS SEPARATE FEATURES. MAKE SURE TO GO BACK TO CREATE A SEARCH CONTROLLER
