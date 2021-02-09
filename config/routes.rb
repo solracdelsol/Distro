@@ -17,9 +17,12 @@ Rails.application.routes.draw do
 
     resources :subscriptions, only: [:create, :index, :show]
 
+    resources :search, only: [:index]
+
   end
 
 
+  
   #SHOULD I NOT NEST THE ROUTES LIKE THIS? to not overcomplicate routes
   # namespace :api, defaults: {format: :json} do
   #   resources :users, only: [:create, :index, :update, :show, :destroy]  #only pertains only to users, not to [create]
@@ -30,7 +33,6 @@ Rails.application.routes.draw do
   #   resource :session, only: [:create, :destroy]
 
   # end
-
   
   root "static_pages#root"
 
