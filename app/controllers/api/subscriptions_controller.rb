@@ -13,7 +13,7 @@ class Api::SubscriptionsController < ApplicationController
   end
 
   # def show
-  #   @subscription = Subscription.find_by(server_id: 7, user_id: 8) # CHANGE THIS
+  #   @subscription = Subscription.find_by(server_id: params[:server_id], user_id: params[:user_id]) # CHANGE THIS
   #   # @server = Server.where("server_title LIKE '%#{params[:server][:server_title]}%' ")
 
   #   if @subscription
@@ -23,17 +23,26 @@ class Api::SubscriptionsController < ApplicationController
   #   end
   # end
 
-  def index #to search for servers 
+  def index
     # ActionController::Parameters.permit_all_parameters = false #not needed but good to know
 
-    @servers = Server.where("server_title LIKE '%#{params[":server"][":server_title"]}%' ")
+    # @servers = Server.where("lower(server_title) LIKE '%#{params[":server"][":server_title"].downcase}%' ")
+    @server = Server.find(params[:server_id])
 
-    if @servers
+    if @server
       render "api/subscriptions/index"
     else
       render json: @user.errors.full_messages, status: 422
     end
 
+  end
+
+  def destroy
+    @subscription = Subscription.find_by( id: params[:subscription_id])
+
+    if @subscription.destroy!
+      flash.now[:notice] = "Successfully unsubscribed from server"
+    end
   end
 
 

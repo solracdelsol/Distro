@@ -2,6 +2,7 @@ class Api::ServersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+    debugger
     @server = Server.new(server_params) #IMPORTANT: Upon server creation, we want to also create a default channel for this server called General, and this user-server link to our Subscription table
     
     if @server.save!
@@ -24,7 +25,7 @@ class Api::ServersController < ApplicationController
     if @server
       render "api/servers/show"
     else
-      render json: ["Server not found"], status: 404
+      flash[:notice] = "No servers found"
     end
     
   end
@@ -58,10 +59,10 @@ class Api::ServersController < ApplicationController
     channels = @server.channels
 
     if subscriptions.each { |sub| sub.destroy!} && channels.each { |channel| channel.destroy!} && @server.destroy!
-        @servers = current_user.hosted_servers
-        render "api/servers/index"
+      @servers = current_user.hosted_servers
+      render flash.now[:notice] = "Server successfully deleted."
     else
-      render json: ["Server not found"], status: 404
+      render flash.now[:notice] = "Something went wrong. Please try again later."
     end
 
   end

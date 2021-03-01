@@ -7,6 +7,13 @@ export const createSubscription = (subscribeObj) => {
   })
 }
 
+export const getServerSubs = (subscribeObj) => {
+  $.ajax({
+    method: "GET",
+    url: `api/servers/${subscribeObj.serverId}/subscriptions`
+  })
+}
+
 
 // query for servers in db by title of server
 export const queryServers = (serverTitleQuery) => {

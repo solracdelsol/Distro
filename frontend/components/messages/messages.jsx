@@ -80,6 +80,53 @@ class MessageWindow extends React.PureComponent {
 
   }
 
+  componentDidMount(){
+    setInterval(() => (this.props.getMessages({channelId: this.props.channelId})), 3000)
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.messages !== prevProps.messages){
+
+      while (document.getElementById("current-user-message")){
+        document.getElementById("current-user-message").remove()
+        // document.getElementById("timestamp").remove()
+      }
+
+      while (document.getElementById("other-user-message")){
+        document.getElementById("other-user-message").remove()
+        // document.getElementById("timestamp").remove()
+      }
+
+      while(document.getElementById("chat-br")){
+        document.getElementById("chat-br").remove();
+      }
+
+      Object.values(this.props.messages).reverse().forEach((message, idx) => {
+      let parent = document.getElementById("message-window-interface")
+
+      let messageNode = document.createElement("div")
+      let timeNode = document.createElement("div")
+      let time = document.createTextNode(`${message.userName} ${this.parseTime(message.timestamp)}`)
+      let text = document.createTextNode(message.body)
+      
+
+      timeNode.appendChild(time)
+      timeNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
+      messageNode.appendChild(text)
+      messageNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
+
+      parent.appendChild(messageNode)
+      parent.appendChild(timeNode)
+      
+      let br = document.createElement("br")
+      br.setAttribute("id", "chat-br")
+      return parent.appendChild(br)
+         
+      })
+
+    }
+  }
+
   render() {
 
     const formatMessages = () => { 

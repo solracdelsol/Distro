@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       #resources :messages, only: [:index, :show] # if I ever wanted to index a specific user's messages indiscriminantly i can use this.
     resources :servers, only: [:create, :destroy, :index, :show, :update] do
       resources :channels, only: [:create, :destroy, :index, :show, :update]
+      resources :subscriptions, only: [:show, :index, :destroy]
     end
     
     resources :channels do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     #nested so users have routes to their servers
     resource :session, only: [:create, :destroy]
 
-    resources :subscriptions, only: [:create, :index, :show]
+    resources :subscriptions, only: [:create, :index, :show, :destroy]
 
     resources :search, only: [:index]
 

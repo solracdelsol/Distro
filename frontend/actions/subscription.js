@@ -15,18 +15,23 @@ const receiveSubscriptions = (subscriptions) => ({
   subscriptions
 })
 
-const clearSubscription = (subscription) => ({
-  type: CLEAR_SUB,
-  subscription
-})
+// const clearSubscription = (subscription) => ({
+//   type: CLEAR_SUB,
+//   subscription
+// })
 
-const clearAllSubscriptions = () => ({
+export const clearAllSubscriptions = () => ({
   type: CLEAR_SUBS
 })
 
 export const createSubscription = (subscribeObj) => (dispatch) => (
   APIUtil.createSubscription(subscribeObj)
   .then((subscription)=>(dispatch(receiveSubscription(subscription))))
+)
+
+export const getSubscriptions = (subscribeObj) => (dispatch) => (
+  APIUtil.getServerSubs(subscribeObj)
+  .then((subs) => dispatch(receiveSubscriptions(subs)))
 )
 
 // export const queryServers = (serverTitleQuery) => (dispatch) => (
