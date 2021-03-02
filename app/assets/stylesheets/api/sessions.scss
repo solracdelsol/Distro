@@ -61,14 +61,15 @@
         color: white;
         // color: #7289da;
         font-size: 18;
-        margin-left: 120px;
+        margin-left: 140px;
+        margin-bottom: 30px;
       }
 
       .welcome-subcaption{
         color: rgb(209, 202, 202);
         // color: #7289da;
         margin-top: -10px;
-        margin-left: 60px;
+        margin-left: 75px;
       }
 
       .login-email, .login-password{
@@ -148,7 +149,6 @@
     height: 500px;
     display: flex;
     flex-direction: column;
-
     color: whitesmoke;
     font: bolder;
     font-family: sans-serif;
@@ -156,6 +156,8 @@
 
     form{
       height: 350px;
+      margin-top: 50px;
+      margin-left: 20px;
     }
     
     .signup-input{
@@ -169,6 +171,8 @@
 
       .create-account-caption{
         padding-left: 150px;
+        margin-top: 50px;
+        font-size: 20px;
       }
 
 
