@@ -39,7 +39,6 @@ const mdp = (dispatch) => ({
   openModal: (modal) => dispatch(openModal(modal)),
   closeModal: () => dispatch(closeModal()),
 
-
 // dispatches to generate channels for that server
 });
 export default withRouter(connect(msp, mdp)(ServerBar))
