@@ -52,6 +52,9 @@ class ServerBar extends React.Component {
     }
 
     this.setState({selectedServer: this.parseId(e)})
+    this.props.clearAllSubscriptions();
+    let subscribeObject = {serverId: this.parseId(e).id}
+    this.props.getSubscriptions(subscribeObject)
     // debugger
     console.log(`server switched to ${e.currentTarget.textContent}`)
     console.log(this.parseId(e));

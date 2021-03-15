@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { logout } from "../../actions/session";
 import {createChannel, getChannel, getChannels, patchChannel, deleteChannel} from "../../actions/channel";
+import {getSubscriptions, createSubscription, clearAllSubscriptions} from "../../actions/subscription";
 import ChannelBar from "./channelbar.jsx";
 
 import {createServer, getServer, getServers, patchServer, deleteServer} from "../../actions/server"
@@ -38,6 +39,10 @@ const mdp = (dispatch) => ({
   getMessage: (messageObj) => dispatch(getMessage(messageObj)),
   getMessages: (messageObj) => dispatch(getMessages(messageObj)),
   clearMessages: () => dispatch(clearMessages()),
+
+  getSubscriptions: (subscriptionObj) => dispatch(getSubscriptions(subscriptionObj)),
+  clearAllSubscriptions: () => dispatch(clearAllSubscriptions()),
+
 
   closeModal: () => dispatch(closeModal()),
   openModal: (modal) => dispatch(openModal(modal)),

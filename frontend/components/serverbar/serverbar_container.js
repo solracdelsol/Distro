@@ -5,6 +5,8 @@ import {createServer, getServer, getServers, patchServer, deleteServer} from "..
 
 import {createChannel, getChannel, getChannels, patchChannel, deleteChannel} from "../../actions/channel";
 
+import {getSubscriptions, createSubscription, clearAllSubscriptions} from "../../actions/subscription";
+
 import {openModal, closeModal} from "../../actions/modal"
 
 import { withRouter } from "react-router";
@@ -30,6 +32,9 @@ const mdp = (dispatch) => ({
   getChannels: (serverObj) => dispatch(getChannels(serverObj)),
   patchChannel: (channelObj) => dispatch(patchChannel(channelObj)),
   deleteChannel: (channelObj) => dispatch(deleteChannel(channelObj)),
+
+  getSubscriptions: (subscriptionObj) => dispatch(getSubscriptions(subscriptionObj)),
+  clearAllSubscriptions: () => dispatch(clearAllSubscriptions()),
 
   openModal: (modal) => dispatch(openModal(modal)),
   closeModal: () => dispatch(closeModal()),

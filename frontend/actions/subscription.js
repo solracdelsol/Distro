@@ -31,7 +31,7 @@ export const createSubscription = (subscribeObj) => (dispatch) => (
 
 export const getSubscriptions = (subscribeObj) => (dispatch) => (
   APIUtil.getServerSubs(subscribeObj)
-  .then((subs) => dispatch(receiveSubscriptions(subs)))
+  .then((subs) => (dispatch(receiveSubscriptions(subs))))
 )
 
 // export const queryServers = (serverTitleQuery) => (dispatch) => (

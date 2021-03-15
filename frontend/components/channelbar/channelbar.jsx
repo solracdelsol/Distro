@@ -5,6 +5,7 @@ import { getChannels } from "../../util/channel";
 import { getServers } from "../../util/server";
 import ServerBar from "../serverbar/serverbar_container";
 import MessageWindow from "../messages/messages_container";
+import SubscriptionBar from "../subscriptionbar/subscriptionbar"
 
 
 // import { getChannels } from "../../util/channel";
@@ -26,6 +27,7 @@ class ChannelBar extends React.Component {
     if (this.props.serverId !== prevProps.serverId ) {
       let serverObj = {id: this.props.serverId} //
       this.props.getChannels(serverObj);  // THESE TWO LINES ARE IMPORTANT TO RERENDER AFTER SERVER CREATION
+
       (this.setState({selectedChannel: null}))
       this.props.clearMessages();
       while (document.getElementById("current-user-message")){
@@ -106,6 +108,10 @@ class ChannelBar extends React.Component {
     const chatWindow = () => {
       return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
     }
+
+    const subscriptionWindow = () => {
+      return (<SubscriptionBar  serverId={this.props.serverId ? this.props.serverId : ""} />)
+    }
     
     const channelsTemplate = () => {
       return(
@@ -121,6 +127,7 @@ class ChannelBar extends React.Component {
             <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button>
           </div>
           {chatWindow()}
+          {subscriptionWindow()}
         </div>
       )
     }

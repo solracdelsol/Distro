@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 class MessageWindow extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -155,6 +156,7 @@ class MessageWindow extends React.PureComponent {
     }
 
     return (
+      
       <div className="messages-container">
           <div id="message-window-title">{this.props.channelTitle} </div>
           <div id="messages-and-form-container">
@@ -174,7 +176,6 @@ class MessageWindow extends React.PureComponent {
             <button id="message-send" onClick={this.handleSubmit}>Send</button>
             </form> : null}
         </div>
-
       </div>
     );
   }
