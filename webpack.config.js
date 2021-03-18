@@ -13,7 +13,7 @@ module.exports = {
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
-          query: {
+          options: {
             presets: ["@babel/env", "@babel/react"],
           },
         },
@@ -24,4 +24,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", "*"],
   },
+  watchOptions: {
+    // poll: 1000, // Check for changes every second
+  },
+  // stats: "normal"
 };

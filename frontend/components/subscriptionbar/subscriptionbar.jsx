@@ -9,32 +9,32 @@ class SubscriptionBar extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.serverId !== prevProps.serverId){
-      debugger
-      return this.setState({selectedServer: this.props.serverId})
-    }
-  }
-
   
   render(){
-    const listSubscriptions = () => (
-      Object.values(this.props.subscriptions.members).map((sub)=>{
-        return <li>{sub.userName}</li>
-      })
-    )
+
+    const generateSubs = () => {
+      if(this.props.serverId !== ""){
+        let subs = []
+        Object.entries(this.props.subscriptions).forEach((sub)=>{
+          // debugger
+          if(sub[0] === this.props.serverId.toString()){
+            // debugger
+            sub[1].members.forEach((user, idx)=>{
+              debugger
+          return subs.push( <li key={idx}>{user.info.userName}</li>)
+        })
+          }})
+          // debugger
+          return subs
+      }
+    };
+
 
     const subscriptionTemplate = () => (
-      this.props.subscriptions ? 
-
-      <div>
-        <h1>Members</h1>
-        {listSubscriptions()}
-      </div>
-
-      :
-
-      <h1>Members not Found</h1>
+    <div id="subscription-container">
+      <h1 id="members-caption">Members</h1>
+      {generateSubs()}
+    </div>
     )
 
 
@@ -45,22 +45,3 @@ class SubscriptionBar extends React.Component {
 }
 
 export default SubscriptionBar
-
-// import { connect } from "react-redux";
-// import {getSubscriptions, createSubscription} from "../../actions/subscription";
-// import SubscriptionBar from "./subscriptionbar.jsx";
-
-
-// const msp = (state) => ({
-// subscriptions: state.entities.subscriptions,
-
-// });
-
-// const mdp = (dispatch) => ({
-// getSubscriptions: (subscriptionObj) => dispatch(getSubscriptions(subscriptionObj)),
-// createSubscription: (subscriptionObject) => dispatch(createSubscription(subscriptionObject)),
-
-
-// });
-
-// export default connect(msp, mdp)(SubscriptionBar)

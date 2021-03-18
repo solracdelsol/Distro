@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getServers } from "../../util/server";
 
 import ChannelBar from "../channelbar/channelbar_container"
+import SubscriptionBar from "../subscriptionbar/subscriptionbar_container";
 
 class ServerBar extends React.Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class ServerBar extends React.Component {
     // let serverObject = {"7":{"id":7,"serverTitle":"demo","hostId":8}}
     this.props.getServers().then( (servers) => Object.values(servers.servers).forEach(server => { 
       // debugger
+      this.props.getSubscriptions({serverId: server.id})
       return this.props.getChannels(server) }));
   }
 
@@ -73,18 +74,28 @@ class ServerBar extends React.Component {
       Object.values(this.props.servers).forEach((server, idx) => {
         return servers.push( <Link to={`/channels/${server.id}`} key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</Link> )
       })
-      servers.push(<button onClick={() => this.props.openModal("Create Server")} key={"createServer"}>Create a Server</button>)
+      servers.push(<div id="create-server-button" onClick={() => this.props.openModal("Create Server")} key={"createServer"}></div>)
       return servers
     }
 
     const channelList = () => {
-      return (<ChannelBar serverTitle={!this.state.selectedServer ? "" : this.state.selectedServer.serverTitle} serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId}/>)
+      return (<ChannelBar 
+              serverTitle={!this.state.selectedServer ? "" : this.state.selectedServer.serverTitle} 
+              serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} 
+              hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId}
+              />)
+    }
+
+    const subscriptionList = () => {
+      return (<SubscriptionBar 
+              serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} 
+              hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId} 
+              />)
     }
 
     const displayUser = () => {
       return (`Welcome ${Object.values(this.props.users.id)[0].username || Object.values(this.props.users)[0].username}`)
     }
-
 
     const serverTemplate = () => (
       <div className="homepage">
@@ -96,6 +107,7 @@ class ServerBar extends React.Component {
         </div>
       </div>
       {channelList()}
+      {subscriptionList()}
       </div>
     )
     return serverTemplate();

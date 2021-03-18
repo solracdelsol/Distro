@@ -5,7 +5,7 @@ import { getChannels } from "../../util/channel";
 import { getServers } from "../../util/server";
 import ServerBar from "../serverbar/serverbar_container";
 import MessageWindow from "../messages/messages_container";
-import SubscriptionBar from "../subscriptionbar/subscriptionbar"
+import SubscriptionBar from "../subscriptionbar/subscriptionbar_container"
 
 
 // import { getChannels } from "../../util/channel";
@@ -109,9 +109,6 @@ class ChannelBar extends React.Component {
       return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
     }
 
-    const subscriptionWindow = () => {
-      return (<SubscriptionBar  serverId={this.props.serverId ? this.props.serverId : ""} />)
-    }
     
     const channelsTemplate = () => {
       return(
@@ -127,10 +124,10 @@ class ChannelBar extends React.Component {
             <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button>
           </div>
           {chatWindow()}
-          {subscriptionWindow()}
         </div>
       )
     }
+
     return channelsTemplate()
   }
 }
