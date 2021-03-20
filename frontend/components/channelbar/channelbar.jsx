@@ -8,6 +8,7 @@ import MessageWindow from "../messages/messages_container";
 import SubscriptionBar from "../subscriptionbar/subscriptionbar_container"
 
 
+
 // import { getChannels } from "../../util/channel";
 
 class ChannelBar extends React.Component {
@@ -94,12 +95,13 @@ class ChannelBar extends React.Component {
     const generateChannels = () => {
       if(this.props.serverTitle !== ""){
         let channels = []
+        channels.push(<button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button>)
+        channels.push(<button>Invite</button>)
         Object.values(this.props.channels).forEach((channel, idx)=>{
           if(channel.serverId === this.props.serverId){
           channels.push(<Link to={`/channels/${channel.serverId}/${channel.id}`} key={idx} id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</Link>)
           }
         })
-        channels.push(<button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button>)
         return channels;
       }
     };
@@ -115,13 +117,16 @@ class ChannelBar extends React.Component {
         <div className="homepage">
           <div className="channel-bar-container">
             <div className="channel-bar">
-                {this.props.serverTitle}
+                <h1 id="server-title-caption">{this.props.serverTitle}</h1>
 
               <div id="channel-list" className="channel-list">
                 {generateChannels()}
               </div>
             </div>
-            <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button>
+            {/* <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button> */}
+            {/* <button>Invite</button>
+            <button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button> */}
+           <i className="fa fa-gear fa-3x" onClick={this.props.logout}></i>
           </div>
           {chatWindow()}
         </div>

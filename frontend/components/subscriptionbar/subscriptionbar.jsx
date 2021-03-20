@@ -21,7 +21,7 @@ class SubscriptionBar extends React.Component {
             // debugger
             sub[1].members.forEach((user, idx)=>{
               debugger
-          return subs.push( <li key={idx}>{user.info.userName}</li>)
+          return subs.push( <li id="member" key={idx}>{user.info.userName}</li>)
         })
           }})
           // debugger
