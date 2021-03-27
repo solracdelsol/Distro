@@ -1,14 +1,15 @@
 .channel-bar-container{
     display: flex;
     position: relative;
-    max-width: 72px;
     height: 100vh;
     left: auto;
     flex-direction: column;
-    width: 240px;
-    max-width: 240px;
+    width: 250px;
+    max-width: 250px;
     margin-right: 1px;
-    padding-left: 50px;
+    margin-left: 20px;
+        background-color: #2f3136;
+
 
   .channel-bar{
     width: inherit;
@@ -25,12 +26,18 @@
       list-style-type: none;
       padding: 0;
       display: flex;
+
       // justify-content: space-between;
       
       
 
 
     
+    }
+
+    .channel-name{
+             color: #FFFFFF;
+             align-self: center;
     }
 
   }
@@ -44,12 +51,18 @@
 
 .fa-gear{
   margin-bottom: 10px;
-  margin-left: -30px;
+  color: white;
+  align-self: center;
 }
 
 #server-title-caption{
   font-size: 20px;
-  margin-top: 20px
+  margin-top: 20px;
+      color: #FFFFFF;
+      align-self: center;
+      // border-bottom: 1px solid #808080;
+      padding: 20px 20px;
+  
 }
 
 // #gear-icon{

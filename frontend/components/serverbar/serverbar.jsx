@@ -72,7 +72,7 @@ class ServerBar extends React.Component {
     const serverList = () =>{
       let servers = [];
       Object.values(this.props.servers).forEach((server, idx) => {
-        return servers.push( <Link to={`/channels/${server.id}`} key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</Link> )
+        return servers.push( <Link to={`/channels/${server.id}`} className="server-name" key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</Link> )
       })
       servers.push(<div id="create-server-button" onClick={() => this.props.openModal("Create Server")} key={"createServer"}></div>)
       return servers
@@ -94,11 +94,11 @@ class ServerBar extends React.Component {
     }
 
     const displayUser = () => {
-      return (`Welcome ${Object.values(this.props.users.id)[0].username || Object.values(this.props.users)[0].username}`)
+      return ( <h1 id="welcome-user-caption">{Object.values(this.props.users.id)[0].username || Object.values(this.props.users)[0].username}</h1>)
     }
 
     const serverTemplate = () => (
-      <div className="homepage">
+      <div className="homepage-layout">
       <div className="server-bar-container">
         <div className="server-bar">
           <div className="server-list">{displayUser()}

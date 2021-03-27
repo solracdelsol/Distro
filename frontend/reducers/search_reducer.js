@@ -10,8 +10,8 @@ const searchReducer = (state = {}, action) => {
   switch(action.type){
     case RECEIVE_SEARCH:
       return Object.assign({}, state, action.search); 
-    case RECEIVE_SUB:
-      return Object.assign({}, state, action.server);
+    // case RECEIVE_SUB:
+    //   return Object.assign({}, state, action.server);
     case CLEAR_SEARCH:
       return {};
     case LOGOUT_CURRENT_USER:

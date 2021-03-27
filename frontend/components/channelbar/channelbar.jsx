@@ -95,11 +95,11 @@ class ChannelBar extends React.Component {
     const generateChannels = () => {
       if(this.props.serverTitle !== ""){
         let channels = []
-        channels.push(<button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button>)
-        channels.push(<button>Invite</button>)
+        channels.push(<button key="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>)
+        channels.push(<button key="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)
         Object.values(this.props.channels).forEach((channel, idx)=>{
           if(channel.serverId === this.props.serverId){
-          channels.push(<Link to={`/channels/${channel.serverId}/${channel.id}`} key={idx} id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</Link>)
+          channels.push(<Link to={`/channels/${channel.serverId}/${channel.id}`} key={idx} className="channel-name" id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</Link>)
           }
         })
         return channels;

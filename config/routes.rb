@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
     resources :search, only: [:index]
 
+    get "/search/users", to: "/api/search#user_index"
+
   end
 
 

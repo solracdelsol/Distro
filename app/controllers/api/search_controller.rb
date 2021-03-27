@@ -13,4 +13,16 @@ class Api::SearchController < ApplicationController
 
   end
 
+  def user_index
+    @users = User.where("lower(username) LIKE '%#{params[":user"][":username"].downcase}%' ")
+
+    if @users
+      render "api/search/user_index"
+    end
+  end
+
+  # def search_params
+  #   params.require(:server)
+  # end
+
 end

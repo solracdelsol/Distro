@@ -12,9 +12,18 @@ export const clearSearch = () => ({
   type: CLEAR_SEARCH,
 })
 
-export const search = (searchObj) => (dispatch) => (
-  APIUtil.searchServers(searchObj)
+export const searchServers = (serverQuery) => (dispatch) => (
+  APIUtil.searchServers(serverQuery)
   .then((search)=>(dispatch(receiveSearch(search))))
 )
+
+export const searchUsers = (userQuery) => (dispatch) => {
+  // debugger
+  return(
+  APIUtil.searchUsers(userQuery)
+  .then((search)=>(dispatch(receiveSearch(search))))
+  )
+}
+
 
 //THINGS TO DO: BUILD OUT SEARCH AND SUBSCRIPTIONS AS SEPARATE FEATURES. MAKE SURE TO GO BACK TO CREATE A SEARCH CONTROLLER

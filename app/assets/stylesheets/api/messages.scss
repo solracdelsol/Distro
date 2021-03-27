@@ -1,9 +1,19 @@
 .messages-container{
   height: 100vh;
-  width: 872px;
+  width: 865px;
   display: flex;
   flex-direction: column;
+  background-color: #36393f;
+   color: #FFFFFF;
+   
   // justify-content: flex-end;
+
+  #message-window-title{
+    // border-bottom: 1px solid #201f1f;
+    font-size: 20px;
+    padding: 20px 0px;
+    padding-left: 30px;
+  }
   
   #messages-and-form-container{
     height: inherit;
@@ -14,13 +24,15 @@
     // padding-bottom: 25px;
 
     #messages {
+
       #message-window-interface{
         display: flex;
         flex-direction: column-reverse;
         // overflow: auto;
         overflow: auto;
-        height: 90vh;
+        height: 85vh;
         padding-right: 15px;
+        padding-left: 30px;
         
         #current-user-message{
           align-self: flex-end;
@@ -44,6 +56,7 @@
 
       #message-send{
         height: 50px;
+        width: 57px;
       }
     }
 

@@ -4,10 +4,11 @@
 .server-bar-container{
     display: flex;
     position: relative;
-    max-width: 75px;
+    max-width: 100px;
     height: 100%;
     padding: none;
     margin-left: 10px;
+    background-color: #202225;
 
   .server-bar{
     height: inherit;
@@ -24,18 +25,28 @@
       width: inherit;
       list-style-type: none;
       padding-left: 0;
+          align-items: center;
+
+      #welcome-user-caption{
+        color: #FFFFFF;
+        padding: 20px;
+        border-bottom: 1px solid #808080;
+      }
 
       #test{
         position: relative;
         display: flex;
       }
     
-      
+      .server-name{
+         color: #FFFFFF;
+      }
       
 
 
     
     }
+
   }
 
  
@@ -48,4 +59,13 @@
   width: 50px;
   height: 50px;
   margin-bottom: 10px;
+}
+
+.homepage-layout{
+  display: flex;
+  flex-direction: row;
+  background-color: #202225;
+  height: 100%;
+  width: 100%;
+
 }

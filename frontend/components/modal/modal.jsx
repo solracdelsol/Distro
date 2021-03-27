@@ -3,7 +3,8 @@ import { closeModal } from "../../actions/modal"
 import { connect } from 'react-redux';
 import CreateServerFormContainer from '../create_form/create_server_form_container'
 import CreateChannelFormContainer from '../create_form/create_channel_form_container'
-import InviteFormContainer from "../forms/invite_form"
+import InviteFormContainer from "../forms/invite_form.jsx"
+
 // import './modal.css'; DONT DO THIS, PLACE THEM IN RAILS STYLESHEETS OR ELSE IT WONT GET PARSED
 
 
@@ -24,6 +25,7 @@ function Modal({modal, closeModal}){
       break;
     case 'Invite':
       component = <InviteFormContainer/>;
+      break;
     default:
       return null;
   }

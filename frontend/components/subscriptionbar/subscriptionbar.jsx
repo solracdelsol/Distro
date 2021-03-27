@@ -20,7 +20,7 @@ class SubscriptionBar extends React.Component {
           if(sub[0] === this.props.serverId.toString()){
             // debugger
             sub[1].members.forEach((user, idx)=>{
-              debugger
+              // debugger
           return subs.push( <li id="member" key={idx}>{user.info.userName}</li>)
         })
           }})
