@@ -52,7 +52,7 @@ class InviteForm extends React.Component{
 
     const refreshSearchVariable = () => {
       currentSearch = document.getElementById("search-input")
-      return(this.props.searchUsers(currentSearch.value)).then((searchResults) => { //debugger;
+      return(this.props.searchUsers(currentSearch.value)).then((searchResults) => { 
         return this.setState({results: Object.values(searchResults.search).map(  (user)=> {return user.username} ) } ) })
     }
     
@@ -72,7 +72,7 @@ class InviteForm extends React.Component{
     let currentSearch = document.getElementById("search-input").value
     return this.props.searchUsers(currentSearch).then((searchResult)=> {
     let subscribeObject = {subscription: { user_id: Object.values(searchResult.search).filter(search => search.username === currentSearch)[0].id.toString() , server_id: window.location.href.split("/")[location.href.split("/").length -  1]}  }
-    debugger
+
     this.props.createSubscription(subscribeObject)
   }).then(() => { this.props.closeModal() })
     

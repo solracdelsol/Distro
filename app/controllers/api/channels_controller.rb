@@ -24,9 +24,9 @@ class Api::ChannelsController < ApplicationController
   end
 
   def index
-    # debugger
+ 
     @server = Server.find_by(id: params[:server_id])
-    # debugger
+  
     @channels = @server.channels
     if @channels
       render "api/channels/index"

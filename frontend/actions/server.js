@@ -43,7 +43,7 @@ const clearServer = (serverObj) => ({
 export const createServer = (serverForm) => (dispatch) => {
   return APIUtil.postServer(serverForm).then( (server) => {
     return dispatch(receiveServer(server))
-  }).then((serverAction) => {debugger; return getChannels(serverAction.server)});
+  }).then((serverAction) => { return getChannels(serverAction.server)});
   //, (errors) => dispatch(receiveServerErrors(errors))) // when adding for an errors slice of state
 };
 

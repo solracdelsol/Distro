@@ -18,7 +18,7 @@ export const searchServers = (serverQuery) => (dispatch) => (
 )
 
 export const searchUsers = (userQuery) => (dispatch) => {
-  // debugger
+
   return(
   APIUtil.searchUsers(userQuery)
   .then((search)=>(dispatch(receiveSearch(search))))
