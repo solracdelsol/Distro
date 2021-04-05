@@ -111,6 +111,17 @@ class ChannelBar extends React.Component {
       return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
     }
 
+    const channelButtons = () => {
+      let buttons = []
+      if(this.props.serverId){   
+        buttons.push(<button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>
+                    ,<button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)  
+      }
+      return buttons
+
+  
+    }
+
     
     const channelsTemplate = () => {
       return(
@@ -118,8 +129,9 @@ class ChannelBar extends React.Component {
           <div className="channel-bar-container">
             <div className="channel-bar">
                 <h1 id="server-title-caption">{this.props.serverTitle}</h1>
-                <button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>
-                <button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>
+                {channelButtons()}
+                {/* <button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>
+                <button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button> */}
 
               <div id="channel-list" className="channel-list">
                 {generateChannels()}

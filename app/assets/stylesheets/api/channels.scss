@@ -55,6 +55,8 @@
   align-self: center;
 }
 
+
+
 #server-title-caption{
   font-size: 20px;
   margin-top: 20px;
@@ -67,6 +69,11 @@
 
 #create-channel-btn, #invite-btn{
   margin: 20px;
+  cursor: pointer;
+  background-color: rgb(67, 181, 129);
+  border-color: transparent;
+  color: rgb(228, 228, 228);
+  padding: 10px 0px;
 }
 
 // #gear-icon{
