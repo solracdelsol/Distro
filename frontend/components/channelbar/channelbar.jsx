@@ -114,8 +114,8 @@ class ChannelBar extends React.Component {
     const channelButtons = () => {
       let buttons = []
       if(this.props.serverId){   
-        buttons.push(<button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>
-                    ,<button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)  
+        buttons.push(<button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>,
+                    <button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)  
       }
       return buttons
 
