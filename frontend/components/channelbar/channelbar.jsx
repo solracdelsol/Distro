@@ -95,8 +95,8 @@ class ChannelBar extends React.Component {
     const generateChannels = () => {
       if(this.props.serverTitle !== ""){
         let channels = []
-        channels.push(<button key="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>)
-        channels.push(<button key="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)
+        // channels.push(<button key="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>)
+        // channels.push(<button key="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)
         Object.values(this.props.channels).forEach((channel, idx)=>{
           if(channel.serverId === this.props.serverId){
           channels.push(<Link to={`/channels/${channel.serverId}/${channel.id}`} key={idx} className="channel-name" id={Object.entries(channel)} onClick={(e) => this.channelClick(e)}>{channel.channelTitle}</Link>)
@@ -118,6 +118,8 @@ class ChannelBar extends React.Component {
           <div className="channel-bar-container">
             <div className="channel-bar">
                 <h1 id="server-title-caption">{this.props.serverTitle}</h1>
+                <button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>
+                <button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>
 
               <div id="channel-list" className="channel-list">
                 {generateChannels()}
@@ -126,7 +128,7 @@ class ChannelBar extends React.Component {
             {/* <button id="test" className="btn-logout" onClick={this.props.logout}>Log Out</button> */}
             {/* <button>Invite</button>
             <button onClick={() => this.props.openModal("Create Channel")} key={"createChannel"}>Create a Channel</button> */}
-           <i className="fa fa-gear fa-3x" onClick={this.props.logout}></i>
+           <i className="fa fa-gear fa-3x" title="Log Out" onClick={this.props.logout}></i>
           </div>
           {chatWindow()}
         </div>

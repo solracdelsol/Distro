@@ -74,7 +74,7 @@ class ServerBar extends React.Component {
       Object.values(this.props.servers).forEach((server, idx) => {
         return servers.push( <Link to={`/channels/${server.id}`} className="server-name" key={idx} id={Object.entries(server)} onClick={(e) => this.serverClick(e)}>{server.serverTitle}</Link> )
       })
-      servers.push(<div id="create-server-button" onClick={() => this.props.openModal("Create Server")} key={"createServer"}></div>)
+      servers.push(<div id="create-server-button" title="Create a new Server" onClick={() => this.props.openModal("Create Server")} key={"createServer"}></div>)
       return servers
     }
 
