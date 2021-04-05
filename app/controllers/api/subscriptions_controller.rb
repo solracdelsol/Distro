@@ -6,7 +6,8 @@ class Api::SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params) #{subscription: {server_id: "xyz", user_id: "abc"} }
 
     if @subscription.save!
-      render "api/subscriptions/show"
+      @server = @subscription.server
+      render "api/subscriptions/index"
     else
       render json: @user.errors.full_messages, status: 422
     end

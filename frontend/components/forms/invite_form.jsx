@@ -56,7 +56,7 @@ class InviteForm extends React.Component{
         return this.setState({results: Object.values(searchResults.search).map(  (user)=> {return user.username} ) } ) })
     }
     
-    console.log(currentSearch.value) // THING TO DO -> MAKE SURE THIS.STATE.RESULT ARRAY ELEMENTS MATCH THE SEARCHINPUT BEFORE RENDERING AN HTML TAG
+    // console.log(currentSearch.value) // THING TO DO -> MAKE SURE THIS.STATE.RESULT ARRAY ELEMENTS MATCH THE SEARCHINPUT BEFORE RENDERING AN HTML TAG
     return refreshSearchVariable()
   }
 

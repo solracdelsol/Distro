@@ -57,8 +57,8 @@ class ServerBar extends React.Component {
     let subscribeObject = {serverId: this.parseId(e).id}
     this.props.getSubscriptions(subscribeObject)
     // debugger
-    console.log(`server switched to ${e.currentTarget.textContent}`)
-    console.log(this.parseId(e));
+    // console.log(`server switched to ${e.currentTarget.textContent}`)
+    // console.log(this.parseId(e));
   }
 
 

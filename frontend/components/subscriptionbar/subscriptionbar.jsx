@@ -8,44 +8,44 @@ class SubscriptionBar extends React.Component {
       selectedServer: null,
       members: [],
     }
+
+    this.generateSubs = this.generateSubs.bind(this);
   }
 
 
+  generateSubs(){
+
+
+    if(this.props.serverId !== ""){
+      let subs = []
+      Object.entries(this.props.subscriptions).forEach((sub)=>{
+
+        if(sub[0] === this.props.serverId.toString()){
+
+          sub[1].members.forEach((user, idx)=>{
+     
+        return subs.push( <li id="member" key={idx}>{user.info.userName}</li>)
+      })
+        }})
+
+        return subs
+    }
+  };
 
   
   render(){
 
-    const generateSubs = () => {
-
-
-      if(this.props.serverId !== ""){
-        let subs = []
-        Object.entries(this.props.subscriptions).forEach((sub)=>{
-
-          if(sub[0] === this.props.serverId.toString()){
-
-            sub[1].members.forEach((user, idx)=>{
-       
-          return subs.push( <li id="member" key={idx}>{user.info.userName}</li>)
-        })
-          }})
-  
-          return subs
-      }
-    };
-
-
-    const subscriptionTemplate = () => (
+    const subscriptionTemplate = (
     <div id="subscription-container">
       <h1 id="members-caption">Members</h1>
       <div id="member-list">
-        {generateSubs()}
+        {this.generateSubs()}
       </div>
     </div>
     )
 
 
-    return subscriptionTemplate()
+    return subscriptionTemplate
 
   }
 

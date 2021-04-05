@@ -44,7 +44,7 @@ class MessageWindow extends React.PureComponent {
     e.preventDefault();
     e.stopPropagation();
     // this.setState({messageInput: e.currentTarget.value});
-    console.log(e.currentTarget.value)
+    // console.log(e.currentTarget.value)
   }
 
 
@@ -74,7 +74,7 @@ class MessageWindow extends React.PureComponent {
     // let getmessageObject = {channelId = this.props.channelId}
     this.props.createMessage(messageForm)
 
-    console.log(`message sent: ${message}`)
+    // console.log(`message sent: ${message}`)
 
 
     return document.getElementById("message-input").value = ""

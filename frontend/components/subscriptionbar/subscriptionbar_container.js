@@ -6,7 +6,6 @@ import SubscriptionBar from "./subscriptionbar.jsx";
 const msp = (state) => ({
 subscriptions: state.entities.subscriptions,
 modal: state.ui.modal
-
 });
 
 const mdp = (dispatch) => ({

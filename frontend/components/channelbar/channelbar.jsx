@@ -83,8 +83,8 @@ class ChannelBar extends React.Component {
       let messageObject = {channelId: this.parseId(e).id};
       this.props.getMessages(messageObject);
       // debugger
-      console.log(`channel switched to ${e.currentTarget.textContent}`)
-      console.log(this.parseId(e));
+      // console.log(`channel switched to ${e.currentTarget.textContent}`)
+      // console.log(this.parseId(e));
 
     }
   }
