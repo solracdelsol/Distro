@@ -50,6 +50,6 @@ class Api::SubscriptionsController < ApplicationController
   private
 
   def subscription_params
-    params.require(:subscription).permit(:server_id, :user_id, :server_title) 
+    params.require(:subscription).permit(:server_id, :user_id) 
   end
 end

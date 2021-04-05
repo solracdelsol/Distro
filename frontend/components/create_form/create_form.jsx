@@ -30,7 +30,7 @@ class CreateForm extends React.Component {
       processIdObject = { server: {server_title:this.state.unitTitle , host_id: this.props.processId} }
     }
     if(this.props.formType === "Create Channel"){
-      let parseIdArray = document.getElementById("channel-list").firstChild.id.split(",") // example "id,22,channelTitle,General,serverId27"split(",")
+      let parseIdArray = document.getElementById("channel-list").firstChild.id.split(",") // example "id,22,channelTitle,General,serverId,27"split(",")
       processIdObject = { channel: {ch_title: this.state.unitTitle , server_id: parseIdArray[parseIdArray.length - 1]} }
     }
 

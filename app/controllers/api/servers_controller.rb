@@ -2,7 +2,6 @@ class Api::ServersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    debugger
     @server = Server.new(server_params) #IMPORTANT: Upon server creation, we want to also create a default channel for this server called General, and this user-server link to our Subscription table
     
     if @server.save!
