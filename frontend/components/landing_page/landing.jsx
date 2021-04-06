@@ -9,7 +9,7 @@ class LandingPage extends React.Component {
   }
 
   demoLogin() {
-    const demo_user = { email: "carlos", password: "carlos" };
+    const demo_user = { email: "demoUser", password: "demoUser" };
     return this.props.login(demo_user);
   }
 

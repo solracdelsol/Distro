@@ -14,13 +14,14 @@ ActiveRecord::Base.transaction do
   Subscription.destroy_all
   Message.destroy_all
 
-  demo_user1 = User.create!(username:'carlos', email:'carlos', password:'carlos')
-  demo_user2 = User.create!(username:"kihoon", email:"kihoon", password:"kihoon")
-
-  demo_server1 = Server.create!(server_title: 'demo1', host_id: User.find(1).id)
-  demo_server2 = Server.create!(server_title: 'demo2', host_id: User.find(1).id)
-  demo_server3 = Server.create!(server_title: 'demo3', host_id: User.find(1).id)
-
+  demo_user1 = User.create!(username:'demoUser', email:'demoUser', password:'demoUser')
+  
+  demo_server1 = Server.create!(server_title: 'demo1', host_id: User.last.id)
+  demo_server2 = Server.create!(server_title: 'demo2', host_id: User.last.id)
+  demo_server3 = Server.create!(server_title: 'demo3', host_id: User.last.id)
+  
+  demo_user2 = User.create!(username:"demoUser2", email:"demoUser2", password:"demoUser2")
+  
   Server.all.each do |server|
     Channel.create!(server_id: server.id, ch_title: "General")
     User.all.each do |user|
