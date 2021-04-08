@@ -14,6 +14,9 @@ const sessionErrorsReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
+      if(action.errors.responseJSON.includes("Username has already been taken")){
+        newState['username'] = "Username has already been taken";
+      }
       if (action.errors.responseText = "['Invalid username/password combination']"){
         newState['email'] = 'Invalid email or password';
         newState['password'] = 'Invalid email or password';

@@ -27,9 +27,9 @@ class Signup extends React.Component{
               <div className="signup-input">
                 <h4 className="create-account-caption">Create an Account</h4>
                 <form className="form" onSubmit={this.handleSubmit}>
-                  <label className="signup-username">
-                    <h5>
-                      Username
+                  <label className={this.props.errors['username'] ? 'error-label' : 'signup-username'}>
+                    <h5 className={this.props.errors['username'] ? 'error-label' : 'signup-username'} style={{color: this.props.errors['username'] ? "red" : "white"}} >
+                      {this.props.errors['username'] ? "USERNAME- name is already taken" : "Username"}
                     </h5>
                     <input
                       type="text"
@@ -37,10 +37,10 @@ class Signup extends React.Component{
                       onChange={this.update("username")}
                       className="signup-input"
                     />
-                  </label>
-                  <label className="signup-email">
-                    <h5>
-                      Email
+                  </label >
+                  <label className={this.props.errors['username'] ? 'error-label' : "signup-email"}>
+                    <h5 style={{color: this.props.errors['username'] ? "red" : "white"}}>
+                      {this.props.errors['email'] ? 'EMAIL - Invalid email/password' : 'Email'}
                     </h5>
                     <input
                       type="text"
@@ -49,9 +49,9 @@ class Signup extends React.Component{
                       className="signup-input"
                     />
                   </label>
-                  <label className="signup-password">
-                    <h5>
-                      Password
+                  <label className={this.props.errors['password'] ? 'error-label' : "signup-password"}>
+                    <h5 style={{color: this.props.errors['password'] ? "red" : "white"}}>
+                      {this.props.errors['password'] ? 'PASSWORD - Invalid email/password' : 'Password'}
                     </h5>
                     <input
                       type="text"
@@ -66,7 +66,7 @@ class Signup extends React.Component{
                   </button>
                   </div>
                   <div className="login-link">
-                    <Link className="redirect-login" to="/login">Already have an account?</Link>
+                    <Link className="redirect-login"  onClick={this.props.clearErrors} to="/login">Already have an account?</Link>
                   </div>
                 </form>
               </div>
