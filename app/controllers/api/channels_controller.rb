@@ -1,6 +1,6 @@
 class Api::ChannelsController < ApplicationController
 
-  skip_before_action :verify_authenticity_token #use this to not get error'd out when doing non-GET requests on POSTMAN
+  #skip_before_action :verify_authenticity_token #use this to not get error'd out when doing non-GET requests on POSTMAN
 
   def create
     @channel = Channel.new(channel_params)
@@ -9,7 +9,7 @@ class Api::ChannelsController < ApplicationController
       @channels = Server.find_by(id: params[:server_id]).channels #add this line because the index jbuilder has the same variable
       render "api/channels/index"
     else
-      render json: ["Unable to process your request"], status: 404
+      render json: ["This channel name already exists in this server"], status: 422
     end
   end
 

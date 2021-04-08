@@ -6,6 +6,9 @@ export const RECEIVE_CHANNELS = "RECEIVE_CHANNELS";
 export const CLEAR_CHANNEL = "CLEAR_CHANNEL";
 export const EDIT_CHANNEL = "EDIT_CHANNEL";
 
+export const RECEIVE_CHANNEL_ERRORS = "RECEIVE_CHANNEL_ERRORS"
+export const CLEAR_CHANNEL_ERRORS = "CLEAR_CHANNEL_ERRORS"
+
 // action creators
 
 const receiveChannel = (channel) => ({
@@ -28,22 +31,22 @@ const clearChannel = (channelObj) => ({
   channelId: channelObj.id, // needs to know which channel needs to be cleared from frontend
 })
 
-// const receiveChannelErrors = (errors) => ({
-//   type: RECEIVE_CHANNEL_ERRORS,
-//   errors,
-// });
+const receiveChannelErrors = (errors) => ({
+  type: RECEIVE_CHANNEL_ERRORS,
+  errors,
+});
 
-// export const clearChannelErrors = () =>({
-//   type: CLEAR_CHANNEL_ERRORS
-// })
+export const clearChannelErrors = () =>({
+  type: CLEAR_CHANNEL_ERRORS
+})
 
 //thunk action creators
 
 export const createChannel = (channelForm) => (dispatch) => {
-  return APIUtil.postChannel(channelForm).then( (channel) => {
-    return dispatch(receiveChannel(channel));
-  }) //remove ) if you wanna add the errors below
-  // , (errors) => dispatch(receiveServerErrors(errors)))
+  return APIUtil.postChannel(channelForm).then( 
+    (channel) => {return dispatch(receiveChannel(channel))},
+    (errors) => { return dispatch(receiveChannelErrors(errors))}
+  ) 
 };
 
 export const getChannel = (channelObj) => (dispatch) => {

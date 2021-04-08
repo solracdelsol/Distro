@@ -1,5 +1,5 @@
 class Api::ServersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
 
   def create
     @server = Server.new(server_params) #IMPORTANT: Upon server creation, we want to also create a default channel for this server called General, and this user-server link to our Subscription table
@@ -14,7 +14,7 @@ class Api::ServersController < ApplicationController
       @servers = current_user.servers #we create an @servers variable available because that's the variable we want to access for the jbuilder api views
       render "api/servers/show"
     else
-      render json: ["Unable to process your request"], status: 404
+      render json: ["This server name is taken"], status: 401
     end
   end
 
@@ -24,7 +24,7 @@ class Api::ServersController < ApplicationController
     if @server
       render "api/servers/show"
     else
-      flash[:notice] = "No servers found"
+      render json: ["No servers found"]
     end
     
   end
