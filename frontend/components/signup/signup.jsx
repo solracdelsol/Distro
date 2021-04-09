@@ -36,6 +36,7 @@ class Signup extends React.Component{
                       value={this.state.username}
                       onChange={this.update("username")}
                       className="signup-input"
+                      autoComplete="off"
                     />
                   </label >
                   <label className={this.props.errors['username'] ? 'error-label' : "signup-email"}>
@@ -47,6 +48,7 @@ class Signup extends React.Component{
                       value={this.state.email}
                       onChange={this.update("email")}
                       className="signup-input"
+                      autoComplete="off"
                     />
                   </label>
                   <label className={this.props.errors['password'] ? 'error-label' : "signup-password"}>
@@ -58,6 +60,7 @@ class Signup extends React.Component{
                       value={this.state.password}
                       onChange={this.update("password")}
                       className="signup-input"
+                      autoComplete="off"
                     />
                   </label>
                   <div>

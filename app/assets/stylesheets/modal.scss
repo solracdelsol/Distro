@@ -11,21 +11,82 @@
 .modal-child {
   position: relative;
   display: flex;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
   // min-height: 600px;
   margin: auto;
   justify-content: center;
   text-align: center;
   border: 2px solid black;
-  background-image: linear-gradient(to left, #249ea0, #008083, #005f60);
+  // background-image: linear-gradient(to left, #00bdca, #00969b, #007d86);
+  // background-color: rgb(53, 205, 216);
+  background-color: #36393f;
   /* background-image: url('../../images/modal-background.jpg'); */
   background-size: contain;
-  border-radius: 150px;
+  border-radius: 30px;
 
 }
 .create-form-container{
   display: flex;
   flex-direction: column;
+  width: inherit;
+  height: inherit;
+
+}
+
+.close-x, .close-x:hover{
+  margin-right: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  color: whitesmoke;
+  font: bolder;
+  cursor: pointer;
+  position: absolute;
+  left: 93%;
+}
+
+.create-form-subcaption{
+  margin-top: 30px;
+  font-size: larger;
+  color: whitesmoke;
+  font: bolder;
+}
+
+.create-form{
+  height: 200px;
+  width: inherit;
+  display:flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  position:sticky;
+}
+
+.create-input{
+  margin-top: 15px;
+  height: 40px;
+  font-size: larger;
+  width: 200px;
+  text-align: center;
+}
+
+.create-final{
+  margin-top: 40px;
+  background-color: purple;
+  color: whitesmoke;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+  width: 200px;
+  font: bolder;
+}
+
+#error-message{
+  position: absolute;
+  top: 9px;
+  list-style: none;
+  color: rgb(223, 17, 17);
+  font-weight: bolder;
+  font-size: larger;
 }

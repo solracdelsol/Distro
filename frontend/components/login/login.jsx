@@ -33,6 +33,7 @@ class LoginForm extends React.Component {
                     onChange={this.update('email')}
                     value={this.state.email}
                     className="login-input"
+                    autoComplete="off"
                   
                   />
                 </label>
@@ -43,6 +44,7 @@ class LoginForm extends React.Component {
                   onChange={this.update('password')}
                   value={this.state.password}
                   className="login-input"
+                  autoComplete="off"
                 />
                 </label>
                 <button onClick={this.props.clearErrors} className="login-submit-button">

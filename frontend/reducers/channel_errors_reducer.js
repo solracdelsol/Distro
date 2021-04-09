@@ -30,7 +30,7 @@ const channelErrorsReducer = (state = {}, action) => {
       //     newState[key] = error;
       //   })
       // }
-      newState["create"] = "channel name already exists for this server"
+      newState["create"] = "Channel name already exists for this server"
       return newState;
     case CLEAR_CHANNEL_ERRORS:
       return {}

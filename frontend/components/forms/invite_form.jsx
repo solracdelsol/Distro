@@ -81,7 +81,7 @@ class InviteForm extends React.Component{
   render(){
 
 
-    const inviteFormTemplate = () => (
+    const inviteFormTemplate = (
       <div className="create-form-container">
         <div onClick={this.props.closeModal} className="close=x"> X </div>
         <div className="create-form-subcaption">{this.props.formType}</div>
@@ -97,7 +97,7 @@ class InviteForm extends React.Component{
     )
 
 
-    return inviteFormTemplate()
+    return inviteFormTemplate
 
   }
 

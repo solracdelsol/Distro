@@ -8,6 +8,7 @@ class CreateForm extends React.Component {
       unitTitle: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   update(field) {
@@ -40,26 +41,37 @@ class CreateForm extends React.Component {
     });
   }
 
+  handleBlur(){
+    this.props.clearFormErrors()
+    return this.props.closeModal()
+  }
+
   render() {
     return (
       <div className="create-form-container">
-        <div onClick={this.props.closeModal} className="close-x">
+        <div onClick={this.handleBlur} className="close-x">
           X
         </div>
         <div className="create-form-subcaption">
           {this.props.formType}
         </div>
 
+        
           <form onSubmit={this.handleSubmit} className="create-form-box">
-            {/* <div>{this.renderErrors()}</div> */}
+            
             <div className="create-form">
+
+              {this.props.errors ? Object.values(this.props.errors).map((error, idx) => <li key={idx} id="error-message" >{error}</li>) : null}
+       
+
               {this.props.formType === "Create Server" ? (
                 <input
                   type="text"
                   value={this.state.unitTitle}
                   onChange={this.update("unitTitle")}
                   className="create-input"
-                  placeholder="Enter a Server Title"
+                  placeholder={`Enter a Server Title`}
+                  autoComplete="off"
                 />
               ) : null}
 
@@ -70,8 +82,11 @@ class CreateForm extends React.Component {
                   onChange={this.update("unitTitle")}
                   className="create-input"
                   placeholder="Enter a Channel Title"
+                  autoComplete="off"
                 />
               ) : null}
+
+
               <input
                 className="create-final"
                 type="submit"

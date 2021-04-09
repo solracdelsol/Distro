@@ -172,8 +172,8 @@ class MessageWindow extends React.PureComponent {
             
         
             {this.props.channelTitle ? <form id="messageForm" >
-            <input type="text" id="message-input" onChange={this.handleChange} placeholder={`Message #${this.props.channelTitle}`}/>
-            <button id="message-send" autoComplete="off"  onClick={this.handleSubmit}>Send</button>
+            <input type="text" id="message-input" onChange={this.handleChange} autoComplete="off" placeholder={`Message #${this.props.channelTitle}`}/>
+            <button id="message-send" onClick={this.handleSubmit}>Send</button>
             </form> : null}
         </div>
       </div>
