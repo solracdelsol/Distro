@@ -25,25 +25,25 @@ class ChannelBar extends React.Component {
 
   componentDidUpdate(prevProps,prevState) {
     // Typical usage (don't forget to compare props):
-    if (this.props.serverId !== prevProps.serverId ) {
-      let serverObj = {id: this.props.serverId} //
-      this.props.getChannels(serverObj);  // THESE TWO LINES ARE IMPORTANT TO RERENDER AFTER SERVER CREATION
+  //   if (this.props.serverId !== prevProps.serverId ) {
+  //     let serverObj = {id: this.props.serverId} //
+  //     this.props.getChannels(serverObj);  // THESE TWO LINES ARE IMPORTANT TO RERENDER AFTER SERVER CREATION
 
-      (this.setState({selectedChannel: null}))
-      this.props.clearMessages();
-      while (document.getElementById("current-user-message")){
-        document.getElementById("current-user-message").remove()
-        // document.getElementById("timestamp").remove()
-      }
-      while (document.getElementById("other-user-message")){
-        document.getElementById("other-user-message").remove()
-        // document.getElementsById("timestamp").remove()
-      }
+  //     // (this.setState({selectedChannel: null}))
+  //     // this.props.clearMessages();
+  //     while (document.getElementById("current-user-message")){
+  //       document.getElementById("current-user-message").remove()
+  //       // document.getElementById("timestamp").remove()
+  //     }
+  //     while (document.getElementById("other-user-message")){
+  //       document.getElementById("other-user-message").remove()
+  //       // document.getElementsById("timestamp").remove()
+  //     }
 
-      while(document.getElementById("chat-br")){
-        document.getElementById("chat-br").remove();
-      }
-    }
+  //     while(document.getElementById("chat-br")){
+  //       document.getElementById("chat-br").remove();
+  //     }
+  //   }
   }
 
   componentDidMount(){  // TODO -> WHEN COMPONENT MOUNTS, SET IT TO RENDER VIA URL INFORMATION URL stuff || threaded props
@@ -60,33 +60,38 @@ class ChannelBar extends React.Component {
 
 
   channelClick(e){
-    // e.preventDefault();
-    let nextChannel = this.parseId(e);
-    if(!this.state.selectedChannel || this.state.selectedChannel !== nextChannel){ // When do i want it to trigger? when !selectedChannel or when the next channel will be different
-      this.props.clearMessages(); //clear state but also clear your message window, figure it out
-      while (document.getElementById("current-user-message")){
-        document.getElementById("current-user-message").remove()
-        // document.getElementById("timestamp").remove()
-      }
 
-      while (document.getElementById("other-user-message")){
-        document.getElementById("other-user-message").remove()
-        // document.getElementsById("timestamp").remove()
-      }
-
-      while(document.getElementById("chat-br")){
-        document.getElementById("chat-br").remove();
-      }
-
-      // debugger
-      this.setState({selectedChannel: this.parseId(e)})
-      let messageObject = {channelId: this.parseId(e).id};
-      this.props.getMessages(messageObject);
-      // debugger
-      // console.log(`channel switched to ${e.currentTarget.textContent}`)
-      // console.log(this.parseId(e));
-
+    // let nextChannel = this.parseId(e);
+    // if(!this.state.selectedChannel || this.state.selectedChannel !== nextChannel){ // When do i want it to trigger? when !selectedChannel or when the next channel will be different
+    
+    let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
+    if(chURL !== this.parseId(e).id){
+    this.props.clearMessages(); //clear state but also clear your message window, figure it out
     }
+    // while (document.getElementById("current-user-message")){
+    //   document.getElementById("current-user-message").remove()
+    //   // document.getElementById("timestamp").remove()
+    // }
+
+    // while (document.getElementById("other-user-message")){
+    //   document.getElementById("other-user-message").remove()
+    //   // document.getElementsById("timestamp").remove()
+    // }
+
+    // while(document.getElementById("chat-br")){
+    //   document.getElementById("chat-br").remove();
+    // }
+
+    // debugger
+    // this.setState({selectedChannel: this.parseId(e)})
+    let messageObject = {channelId: this.parseId(e).id};
+    this.props.getMessages(messageObject);
+    
+    // debugger
+    // console.log(`channel switched to ${e.currentTarget.textContent}`)
+    // console.log(this.parseId(e));
+
+    // }
   }
   
   
@@ -106,16 +111,19 @@ class ChannelBar extends React.Component {
       }
     };
 
+    let sURL = window.location.href.split("/")[5] ? parseInt(window.location.href.split("/")[5]) : null
+    let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
+
 
     const chatWindow = () => {
-      return (<MessageWindow channelTitle={!this.state.selectedChannel ? "" : this.state.selectedChannel.channelTitle} channelId={!this.state.selectedChannel ? "" : this.state.selectedChannel.id} serverId={!this.state.selectedChannel ? "" : this.state.selectedChannel.serverId}/>)
+      return (<MessageWindow channelTitle={this.props.channels[`${chURL}`] ? this.props.channels[`${chURL}`].channelTitle : ""} channelId={this.props.channels[`${chURL}`] ? chURL : "" } serverId={this.props.servers[`${sURL}`] ? sURL : "" }/>)
     }
 
     const channelButtons = () => {
       let buttons = []
       if(this.props.serverId){   
-        buttons.push(<button id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>,
-                    <button id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)  
+        buttons.push(<button key={"create-ch"} id="create-channel-btn" onClick={() => this.props.openModal("Create Channel")}>Create a Channel</button>,
+                    <button key={"invite"} id="invite-btn" onClick={()=> this.props.openModal("Invite")} >Invite</button>)  
       }
       return buttons
 

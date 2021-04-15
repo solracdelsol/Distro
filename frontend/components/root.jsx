@@ -1,13 +1,18 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
+import actionCable from "actioncable"
 
 import App from "./app.jsx";
+
+const CableApp = {}
+
+CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-      <App />
+      <App cableApp={CableApp} />
     </HashRouter>
   </Provider>
 );

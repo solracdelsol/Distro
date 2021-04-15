@@ -4,6 +4,15 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save!
+      channel = Channel.find(params[:channel_id])
+      MessagesChannel.broadcast_to(channel,
+        {message:{
+          body: @message.body,
+          user_id: @message.user_id,
+          channel_id: @message.channel_id
+          }
+        }
+      )
       render "api/messages/show"
     else
       format.json { render json: @message.errors, status: :unprocessable_entity }

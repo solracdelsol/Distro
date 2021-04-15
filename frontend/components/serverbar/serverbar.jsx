@@ -38,22 +38,23 @@ class ServerBar extends React.Component {
   serverClick(e){
     // e.preventDefault();
 
-    while (document.getElementById("current-user-message")){
-      document.getElementById("current-user-message").remove()
-      // document.getElementById("timestamp").remove()
-    }
+    // while (document.getElementById("current-user-message")){
+    //   document.getElementById("current-user-message").remove()
+    //   // document.getElementById("timestamp").remove()
+    // }
 
-    while (document.getElementById("other-user-message")){
-      document.getElementById("other-user-message").remove()
-      // document.getElementsById("timestamp").remove()
-    }
+    // while (document.getElementById("other-user-message")){
+    //   document.getElementById("other-user-message").remove()
+    //   // document.getElementsById("timestamp").remove()
+    // }
 
-    while(document.getElementById("chat-br")){
-      document.getElementById("chat-br").remove();
-    }
+    // while(document.getElementById("chat-br")){
+    //   document.getElementById("chat-br").remove();
+    // }
 
-    this.setState({selectedServer: this.parseId(e)})
+    // this.setState({selectedServer: this.parseId(e)})
     this.props.clearAllSubscriptions();
+    // let sURL = window.location.href.split("/")[5] ? parseInt(window.location.href.split("/")[5]) : null
     let subscribeObject = {serverId: this.parseId(e).id}
     this.props.getSubscriptions(subscribeObject)
     // debugger
@@ -65,6 +66,19 @@ class ServerBar extends React.Component {
   render(){
     // console.log(this.props.users.id)
     // debugger
+
+    //exact path for reference purposes='http://${window.location.hostname}/channels/:server_id/:channel_id'
+    const last = window.location.href.substr(window.location.href.lastIndexOf('/') + 1) //this is channel_id
+    const secondLast = window.location.href.substr(window.location.href.lastIndexOf('/', window.location.href.lastIndexOf('/', window.location.href.lastIndexOf('/') - 1)) + 1).split('/')[0]
+    // const sURL = parseInt(secondLast) //sURL
+    // const chURL = parseInt(last) //chURL
+    // console.log(window.location.href.split("/"))
+
+    let sURL = window.location.href.split("/")[5] ? parseInt(window.location.href.split("/")[5]) : null
+    let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
+    // console.log(sURL,chURL)
+    // debugger
+    const final = Number.isInteger(chURL) && Number.isInteger(sURL) ? last : Number.isInteger(chURL) || Number.isInteger(sURL) ? "" : ""
 
 
 
@@ -79,17 +93,21 @@ class ServerBar extends React.Component {
     }
 
     const channelList = () => {
+
       return (<ChannelBar 
-              serverTitle={!this.state.selectedServer ? "" : this.state.selectedServer.serverTitle} 
-              serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} 
-              hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId}
+              serverTitle={this.props.servers[`${sURL}`] ? this.props.servers[`${sURL}`].serverTitle : ""} 
+              serverId={this.props.servers[`${sURL}`] ? sURL : ""} 
+              hostId={this.props.servers[`${sURL}`] ? this.props.servers[`${sURL}`].hostId : "" }
               />)
+
     }
 
+    // debugger
     const subscriptionList = () => {
+    
       return (<SubscriptionBar 
-              serverId={!this.state.selectedServer ? "" : this.state.selectedServer.id} 
-              hostId={!this.state.selectedServer ? "" : this.state.selectedServer.hostId} 
+              serverId={sURL} 
+              hostId={this.props.servers[`${sURL}`] ? this.props.servers[`${sURL}`].hostId : "" } 
               />)
     }
 

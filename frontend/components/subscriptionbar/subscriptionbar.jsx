@@ -20,7 +20,7 @@ class SubscriptionBar extends React.Component {
       let subs = []
       Object.entries(this.props.subscriptions).forEach((sub)=>{
 
-        if(sub[0] === this.props.serverId.toString()){
+        if(this.props.serverId && sub[0] === this.props.serverId.toString()){
 
           sub[1].members.forEach((user, idx)=>{
      

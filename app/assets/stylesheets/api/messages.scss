@@ -36,12 +36,18 @@
         
         #current-user-message{
           align-self: flex-end;
+          display: flex;
+          text-align: right;
         }
         #other-user-message{
           align-self: flex-start;
+          display: flex;
+          text-align: left;
+          justify-items: left;
         }
         #timestamp{
           align-self: center;
+          display: flex;
         }
       }
 
@@ -61,5 +67,15 @@
     }
 
   }
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+#current-user-message, #other-user-message {
+  background-color: inherit;
+  font-size: 14px;
+  padding: 10px;
 }
 
