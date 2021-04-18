@@ -10,8 +10,8 @@ class MessageWindow extends React.PureComponent {
     this.state = {
       message: {
         body: "",
-        user_id: "",
-        channel_id: "",
+        user_id: this.props.currentUser.id,
+        channel_id: window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null,
       }
 
     };
@@ -24,30 +24,38 @@ class MessageWindow extends React.PureComponent {
 
   parseTime(time){
     //2020-12-19T01:44:17.835Z format of the time string
-    let timeFormat = "";
-    time.split("T").forEach((timeUnit, idx) => {
-    let d = new Date
-      if(idx === 0){ //if im parsing the date
+    // let timeFormat = "";
+    // time.split("T").forEach((timeUnit, idx) => {
+    // let d = new Date
+    //   if(idx === 0){ //if im parsing the date
 
 
-        let dateParse = timeUnit.split("-"); //2020-12-19
-        let day = dateParse[2];
-        let month = dateParse[1];
-        let year = dateParse[0];
+    //     let dateParse = timeUnit.split("-"); //2020-12-19
+    //     let day = dateParse[2];
+    //     let month = dateParse[1];
+    //     let year = dateParse[0];
 
-        return( d.toISOString().split("T")[0] === [year,month,day].join("-") ? "Today at" : timeFormat += ([month,day,year].join("/") + " "));
-      }
-      else{ // im parsing the day-clock
-        let clockParse = timeUnit.split("."); //01:44:17.835Z
-        let clockUnit = clockParse[0].split(":");
-        let hour = parseInt(clockUnit[0]) - (d.getTimezoneOffset() / 60)
-        let min = clockUnit[1];
-        // let sec = clockUnit[2]; // would be cumbersome to include seconds
-        return ( d.toISOString().split("T")[0] === time.split("T")[0] ? timeFormat += ([(String(parseInt(hour)%12 === 0 ?
-           "12" : String(parseInt(hour)%12))),min].join(":")) + (parseInt(hour) >= 12 ? "PM" : "AM") : "" );
-      }
-    })
-    return timeFormat;
+    //     return( d.toISOString().split("T")[0] === [year,month,day].join("-") ? "Today at" : timeFormat += ([month,day,year].join("/") + " "));
+    //   }
+    //   else{ // im parsing the day-clock
+    //     let clockParse = timeUnit.split("."); //01:44:17.835Z
+    //     let clockUnit = clockParse[0].split(":");
+    //     let hour = parseInt(clockUnit[0]) - (d.getTimezoneOffset() / 60)
+    //     let min = clockUnit[1];
+    //     // let sec = clockUnit[2]; // would be cumbersome to include seconds
+    //     return ( d.toISOString().split("T")[0] === time.split("T")[0] ? timeFormat += ([(String(parseInt(hour)%12 === 0 ?
+    //        "12" : String(parseInt(hour)%12))),min].join(":")) + (parseInt(hour) >= 12 ? "PM" : "AM") : "" );
+    //   }
+    // })
+    // return timeFormat;
+
+    let d = new Date(time).toLocaleDateString()
+    let t = new Date(time).toLocaleTimeString()
+    let today = new Date();
+    let date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();  //2019-10-21
+
+    return date === d ? t : d
+
   }
 
   handleChange(e) {
@@ -68,28 +76,12 @@ class MessageWindow extends React.PureComponent {
 
     if(document.getElementById("message-input").value !== ""){ // wont rerender the viewing screen if there isn't an input written
 
-      // while (document.getElementById("current-user-message")){
-      //   document.getElementById("current-user-message").remove()
-      //   // document.getElementById("timestamp").remove()
-      // }
-
-      // while (document.getElementById("other-user-message")){
-      //   document.getElementById("other-user-message").remove()
-      //   // document.getElementById("timestamp").remove()
-      // }
-
-      // while(document.getElementById("chat-br")){
-      //   document.getElementById("chat-br").remove();
-      // }
-
-
       let message = document.getElementById("message-input").value
       let messageForm = { message:{ body: message , user_id: this.props.currentUser.id , channel_id: chURL } }
-      // debugger
-      // let getmessageObject = {channelId = this.props.channelId}
+
       this.props.createMessage(messageForm)
 
-      // console.log(`message sent: ${message}`)
+
 
 
       return document.getElementById("message-input").value = ""
@@ -102,7 +94,7 @@ class MessageWindow extends React.PureComponent {
     return setInterval(() => (this.props.getMessages({channelId: this.props.channelId})), 3000)
   }
 
-  componentDidMount(){
+  componentDidMount(prevProps, prevState){
     // return this.pollMessages()
     // let sURL = window.location.href.split("/")[5] ? parseInt(window.location.href.split("/")[5]) : null
     let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
@@ -124,98 +116,49 @@ class MessageWindow extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps){
-    // if(this.props.messages !== prevProps.messages){
-
-      // while (document.getElementById("current-user-message")){
-      //   document.getElementById("current-user-message").remove()
-      //   // document.getElementById("timestamp").remove()
-      // }
-
-      // while (document.getElementById("other-user-message")){
-      //   document.getElementById("other-user-message").remove()
-      //   // document.getElementById("timestamp").remove()
-      // }
-
-      // while(document.getElementById("chat-br")){
-      //   document.getElementById("chat-br").remove();
-      // }
-
-      // Object.values(this.props.messages).reverse().forEach((message, idx) => {
-      // let parent = document.getElementById("message-window-interface")
-
-      // let messageNode = document.createElement("div")
-      // let timeNode = document.createElement("div")
-      // let time = document.createTextNode(`${message.userName} ${this.parseTime(message.timestamp)}`)
-      // let text = document.createTextNode(message.body)
-      
-
-      // timeNode.appendChild(time)
-      // timeNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
-      // messageNode.appendChild(text)
-      // messageNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
-
-      // parent.appendChild(messageNode)
-      // parent.appendChild(timeNode)
-      
-      // let br = document.createElement("br")
-      // br.setAttribute("id", "chat-br")
-      // return parent.appendChild(br)
-         
-      // })
-
-
-
-    // }
+    if (prevProps.match.params.channel_id !== this.props.match.params.channel_id) {
+      let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
+          this.props.getMessages({channelId:chURL});
+          App.cable.subscriptions.create({
+              channel: "MessagesChannel", channel_id: window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
+          },
+          {
+              received: message => {
+                  this.props.createMessage(message)
+              },
+              speak: function(message) {
+                  return this.perform("speak", message)
+              }
+          })
+          App.cable.subscriptions.subscriptions[0].unsubscribe();
+      } else if (App.cable.subscriptions.subscriptions.length === 2) {
+          App.cable.subscriptions.subscriptions[0].unsubscribe();
+        }
   }
 
-  render() {
+    
+  
+
+  render(){
 
     const formatMessages = () => { 
       let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
       if(this.props.messages && chURL){
       return Object.values(this.props.messages).reverse().map((message, idx) => {
-        // let parent = document.getElementById("message-window-interface")
-
-        // let messageNode = document.createElement("div")
-        // let timeNode = document.createElement("div")
-        // let time = document.createTextNode(`${message.userName} ${this.parseTime(message.timestamp)}`)
-        // let text = document.createTextNode(message.body)
-        
-
-        // timeNode.appendChild(time)
-        // timeNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
-        // messageNode.appendChild(text)
-        // messageNode.setAttribute("id", message.userId === this.props.currentUser.id ? "current-user-message" : "other-user-message")
-
-        // parent.appendChild(messageNode)
-        // parent.appendChild(timeNode)
-        
-        // let br = document.createElement("br")
-        // br.setAttribute("id", "chat-br")
-        // return parent.appendChild(br)
-        // debugger
-
         
           return (
           <React.Fragment key={`message-package-${idx}`} >
-            <div key={`message-header-${idx}`} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{message.body}</div>
-            <div key={`message-body-${idx}`} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${message.userName}: ${this.parseTime(message.timestamp)}`}</div>
+            <div key={`message-body-${idx}`} className={"message-body"} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{message.body}</div>
+            <div id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"} style={{display:  "flex", flexDirection: "row"}}>
+              <div key={`message-username-${idx}`} className={"message-username"}  id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${message.userName}`}</div>
+              <div key={`message-time-${idx}`} className={"message-time"} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${this.parseTime(message.timestamp)}`}</div>
+            </div>
             <br key={`message-br-${idx}`} id="chat-br"></br >
           </React.Fragment>
           )
-        
-          // messageView.push(<pre key={`message-body-${idx}`} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>
-          //   {`${message.userName}: ${this.parseTime(message.timestamp)}
-          //   ${message.body}`}
-          //   </pre>
-      
-        
-      
-        
-    
-                
+   
       })
-    }
+      }
     }
 
     return (
