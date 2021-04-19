@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
-import {createMessage, getMessage, getMessages, clearMessages} from "../../actions/message"
+import {createMessage, getMessage, getMessages, clearMessages, receiveMessage} from "../../actions/message"
 import MessageWindow from "./messages.jsx";
-import {withRouter} from "react-router-dom"
+import {withRouter} from "react-router-dom";
+
 
 // will also need to import the utils for the server fetches
 

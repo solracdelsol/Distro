@@ -4,15 +4,18 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save!
-      channel = Channel.find(params[:channel_id])
-      MessagesChannel.broadcast_to(channel,
-        {message:{
-          body: @message.body,
-          user_id: @message.user_id,
-          channel_id: @message.channel_id
-          }
-        }
-      )
+      # channel = Channel.find(params[:channel_id])
+      # MessagesChannel.broadcast_to(channel,
+      #   {@message.id => {
+      #     id: @message.id,
+      #     body: @message.body,
+      #     userId: @message.user_id,
+      #     channelId: @message.channel_id,
+      #     timestamp: @message.created_at,
+      #     userName: @message.author.username,
+      #     }
+      #   }
+      # )
       render "api/messages/show"
     else
       format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -21,6 +24,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def index
+    # debugger
     @messages = Channel.find_by( id: params[:channel_id]).messages.last(50) #capping at 50 messages to not brick my project frontend
 
     render "api/messages/index"

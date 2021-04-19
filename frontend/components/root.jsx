@@ -9,6 +9,7 @@ const CableApp = {}
 
 CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
 
+
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>

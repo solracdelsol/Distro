@@ -13,7 +13,7 @@ import Modal from "./modal/modal"
 {/* define your routes here */}
 
 
-const App = () => (
+const App = (cableApp) => (
   <div>
     <Modal/>
     
@@ -22,8 +22,8 @@ const App = () => (
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/register" component={SignUpFormContainer} />
       <ProtectedRoute  exact path='/channels' component={HomePageContainer} />
-      <ProtectedRoute exact path='/channels/:server_id' component={HomePageContainer} />
-      <ProtectedRoute exact path='/channels/:server_id/:channel_id' component={HomePageContainer} />
+      <ProtectedRoute cableApp={cableApp} exact path='/channels/:server_id' component={HomePageContainer} />
+      <ProtectedRoute cableApp={cableApp} exact path='/channels/:server_id/:channel_id' component={HomePageContainer} />
     </Switch>
   </div>
 );

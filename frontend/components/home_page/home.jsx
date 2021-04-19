@@ -11,10 +11,10 @@ class HomePage extends React.Component {
 
   render() {
     
-    const homePageTemplate = () => (
+    const homePageTemplate = (
       <div className="homepage-container">
         <div className="homepage">
-        <ServerBar/>
+        <ServerBar cableApp={this.props.cableApp} />
         {/* <ChannelBar/> */}
         {/* <MessageWindow/> */}
         </div>
@@ -22,7 +22,7 @@ class HomePage extends React.Component {
     );
 
 
-    return homePageTemplate();
+    return homePageTemplate;
   }
 }
 

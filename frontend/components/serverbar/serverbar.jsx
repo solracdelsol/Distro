@@ -18,6 +18,7 @@ class ServerBar extends React.Component {
   //Upon mounting, call API to set up state
   componentDidMount(){ 
     // let serverObject = {"7":{"id":7,"serverTitle":"demo","hostId":8}}
+    // debugger
     this.props.getServers().then( (servers) => Object.values(servers.servers).forEach(server => { 
       // debugger
       this.props.getSubscriptions({serverId: server.id})
