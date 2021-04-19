@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_cable.url = "ws://localhost:3000/cable" #ADDED THIS ONE AS PER HEROKU BLOG INSTRUCTIONS https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable
+
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
