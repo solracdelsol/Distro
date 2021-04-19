@@ -115,10 +115,10 @@ class MessageWindow extends React.PureComponent {
         
           return (
           <React.Fragment key={`message-package-${idx}`} >
-            <div key={`message-body-${idx}`} className={"message-body"} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{message.body}</div>
-            <div id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"} style={{display:  "flex", flexDirection: "row"}}>
-              <div key={`message-username-${idx}`} className={"message-username"}  id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${message.userName}`}</div>
-              <div key={`message-time-${idx}`} className={"message-time"} id={message.userId === Object.values(currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${this.parseTime(message.timestamp)}`}</div>
+            <div key={`message-body-${idx}`} className={"message-body"} id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"}>{message.body}</div>
+            <div id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"} style={{display:  "flex", flexDirection: "row"}}>
+              <div key={`message-username-${idx}`} className={"message-username"}  id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${message.userName}`}</div>
+              <div key={`message-time-${idx}`} className={"message-time"} id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${this.parseTime(message.timestamp)}`}</div>
             </div>
             <br key={`message-br-${idx}`} id="chat-br"></br >
           </React.Fragment>
