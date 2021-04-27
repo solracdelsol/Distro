@@ -107,18 +107,19 @@ class MessageWindow extends React.PureComponent {
   
 
   render(){
+    let currentUserProp = this.props.currentUser
 
-    const formatMessages = () => { 
+    const formatMessages = (currentUserProp) => { 
       let chURL = window.location.href.split("/")[6] ? parseInt(window.location.href.split("/")[6]) : null
       if(this.props.messages && chURL){
       return Object.values(this.props.messages).reverse().map((message, idx) => {
         
           return (
           <React.Fragment key={`message-package-${idx}`} >
-            <div key={`message-body-${idx}`} className={"message-body"} id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"}>{message.body}</div>
-            <div id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"} style={{display:  "flex", flexDirection: "row"}}>
+            <div key={`message-body-${idx}`} className={"message-body"} id={message.userId === currentUserProp.id ? "current-user-message" : "other-user-message"}>{message.body}</div>
+            <div id={message.userId === currentUserProp.id ? "current-user-message" : "other-user-message"} style={{display:  "flex", flexDirection: "row"}}>
               <div key={`message-username-${idx}`} className={"message-username"}  id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${message.userName}`}</div>
-              <div key={`message-time-${idx}`} className={"message-time"} id={message.userId === Object.values(this.props.currentUser)[0].id ? "current-user-message" : "other-user-message"}>{`${this.parseTime(message.timestamp)}`}</div>
+              <div key={`message-time-${idx}`} className={"message-time"} id={message.userId === currentUserProp.id ? "current-user-message" : "other-user-message"}>{`${this.parseTime(message.timestamp)}`}</div>
             </div>
             <br key={`message-br-${idx}`} id="chat-br"></br >
           </React.Fragment>
@@ -135,7 +136,7 @@ class MessageWindow extends React.PureComponent {
           <div id="messages-and-form-container">
             <div id="messages">
               <div id="message-window-interface">
-                {formatMessages()} 
+                {formatMessages(currentUserProp)} 
               </div>
             </div>
             

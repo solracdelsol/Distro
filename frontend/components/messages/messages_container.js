@@ -9,7 +9,7 @@ import {withRouter} from "react-router-dom";
 const msp = (state) => ({
   //state for chat will be housing icons that lead to user profiles
   messages: state.entities.messages,
-  currentUser: state.entities.users.id
+  currentUser: state.entities.users.id || null
 });
 
 const mdp = (dispatch) => ({
