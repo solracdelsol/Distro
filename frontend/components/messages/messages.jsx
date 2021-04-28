@@ -70,8 +70,8 @@ class MessageWindow extends React.PureComponent {
 
     let webSocket = App.cable.subscriptions.create(
       {  channel: "MessagesChannel", room: `${chURL}` }  ,
-      { connected: ()=>console.log("Connection established!", webSocket),
-        disconnected: () => console.log("You are now Disconnected!"),
+      { connected: null,
+        disconnected: null,
         received: (data) =>  this.props.getMessages({channelId: data}) ,
         speak: (messageObj) =>  webSocket.perform("speak", messageObj),
       } 
@@ -91,8 +91,8 @@ class MessageWindow extends React.PureComponent {
           this.props.getMessages({channelId:chURL});
       let webSocket = App.cable.subscriptions.create(
       {  channel: "MessagesChannel", room: `${chURL}` }  ,
-      { connected: console.log("Connection established!", App.cable.subscriptions),
-        disconnected: () => console.log("You are now Disconnected!"),
+      { connected: null,
+        disconnected: null,
         received: (data) =>  this.props.getMessages({channelId: data}),
         speak: (messageObj)  => webSocket.perform("speak", messageObj),
       })

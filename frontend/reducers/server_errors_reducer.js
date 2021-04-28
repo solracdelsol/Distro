@@ -30,7 +30,7 @@ const serverErrorsReducer = (state = {}, action) => {
       //     newState[key] = error;
       //   })
       // }
-      console.log(action.errors)
+      // console.log(action.errors)
       newState["create"] = "This server name is taken"
       return newState;
     case CLEAR_SERVER_ERRORS:
