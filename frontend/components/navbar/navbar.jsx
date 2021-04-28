@@ -19,11 +19,11 @@ class NavBar extends React.Component {
               <div className="distro-title">Distro</div>
             </div>
             <div className='nav-center-cont'>
-              <div className='nav-download'>Download</div>
-              <div className='nav-why'>Why Distro?</div>
+              <div className='nav-resume' onClick={() =>  window.location.href='https://docs.google.com/document/d/1gnlFvalpqWQ3958m3UjPVyCVOF-F9CADetFFYfjMy_s/edit?usp=sharing'}></div>
+              <div className='nav-linkedin' onClick={() =>  window.location.href='https://www.linkedin.com/in/carloshpena/'}></div>
               <div className='nav-github' onClick={() =>  window.location.href='https://github.com/solracdelsol'} ></div>
-              <div className='nav-safety'>Safety</div>
-              <div className='nav-support'>Support</div>
+              <div className='nav-angellist' onClick={() =>  window.location.href='https://angel.co/u/carlos-humberto-pena'} ></div>
+              <div className='nav-personal-site' onClick={() =>  window.location.href='https://solracdelsol.github.io/'} ></div>
             </div>
             <div className="nav-right-cont">
               <Link className="login-btn" to="/login">
