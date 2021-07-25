@@ -15,16 +15,18 @@
       margin-top: 20px;
       font-weight: bolder;
       font-size: 30px;
+      color: whitesmoke;
     }
     
     .logo{
-      background-image: asset_url("logo.png");
+      background-image: asset_url("logo.svg");
       background-size: contain;
       background-repeat: no-repeat;
       padding: 20px;
       cursor: pointer;
       font-weight: bolder;
       margin-top: 5px;
+      filter: invert(1);
     }
   }
 
@@ -43,6 +45,8 @@
       background-image: asset_url('resume-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
+      // background-color: white;
+      // border-radius: 50%;
     }
     .nav-linkedin{
       margin-top: 10px;
@@ -52,7 +56,8 @@
       background-image: asset_url('linkedin-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
-      border: 1px solid rgba(0, 0, 0, 0.3)
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
     }
 
     .nav-github{
@@ -63,6 +68,7 @@
       background-repeat: no-repeat;
       padding: 20px;
       cursor: pointer;
+      border-radius: 50%;
     }
     .nav-angellist{
       margin-top: 10px;
@@ -72,6 +78,8 @@
       background-image: asset_url('angellist-icon.webp');
       background-size: contain;
       background-repeat: no-repeat;
+      background-color: white;
+      border-radius: 50%;
     }
 
     .nav-personal-site{

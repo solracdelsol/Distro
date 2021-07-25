@@ -15,7 +15,7 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="body">
+      <div className="body-landing">
         {/* <img src={window.splash} /> */}
 
         <NavBarContainer />
@@ -30,8 +30,10 @@ class LandingPage extends React.Component {
             </div>
           </div>
           <div className="center-btns">
-            <Link to="/register" className="landing-signup">
-              Sign Up
+            <Link to="/register" style={{ textDecoration: 'none' }}>
+              <button className="landing-signup">
+                Sign Up
+              </button>
             </Link>
             <button className="landing-demo-login" onClick={this.demoLogin}>
               Demo Login
