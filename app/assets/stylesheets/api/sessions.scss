@@ -52,10 +52,10 @@
    font-family: sans-serif;
    font-size: larger;
 
-    .login-input:focus{
-      background-color: rgb(65, 62, 62);
-      color: whitesmoke;
-    }
+    // .login-input:focus{
+    //   background-color: rgb(65, 62, 62);
+    //   color: whitesmoke;
+    // }
 
     .login-input{
       padding-top: 10px;
@@ -163,37 +163,40 @@
   }
 
   .signup-form-container{
-    // background-color: transparentize($color: black, $amount: 0.3);
     background-color: rgb(65, 62, 62);
     border-radius: 5px;
-    width: 35%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    color: whitesmoke;
-    font: bolder;
-    font-family: sans-serif;
-    font-size: larger;
+    width: 450px;
+    height: 440px;
 
-    form{
-      height: 350px;
-      margin-top: 50px;
-      margin-left: 20px;
-    }
+    // form{
+    //   height: 350px;
+    //   margin-top: 50px;
+    //   margin-left: 20px;
+    // }
     
     .signup-input{
       
+      // padding-top: 10px;
+      // padding-bottom: 10px;
+      // padding-left: 20px;
+      // // padding-right: 240px;
+      // width: 80%;
+      // height: 18px;
+      // padding-top: 10px;
+      // padding-bottom: 10px;
+      // padding-left: 20px;
+      // padding-right: 20px;
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 20px;
-      // padding-right: 240px;
-      width: 390px;
-      height: 18px;
+      padding-right: 240px;
 
       .create-account-caption{
         padding-left: 150px;
         margin-top: 50px;
         font-size: 20px;
+        color: white;
+        width: 450px;
       }
 
 
@@ -202,14 +205,17 @@
       }
 
       .signup-submit-button{
+        background-color: #7289da;
+        color: white;
+        cursor: pointer;
         text-justify: inherit;
         background-color: #7289da;
         color: white;
         cursor: pointer;
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-left: 178px;
-        padding-right: 178px;
+        padding-left: 186px;
+        padding-right: 176px;
         margin-top: 20px;
         border-radius: 5px;
         border: 2px solid #7289da;

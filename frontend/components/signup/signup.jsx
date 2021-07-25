@@ -66,11 +66,10 @@ class Signup extends React.Component{
                       autoComplete="off"
                     />
                   </label>
-                  <div>
+
                   <button className="signup-submit-button">
-                    <div>Continue</div>
+                    <div>Signup</div>
                   </button>
-                  </div>
                   <div className="login-link">
                     <Link className="redirect-login"  onClick={this.props.clearErrors} to="/login">Already have an account?</Link>
                   </div>
