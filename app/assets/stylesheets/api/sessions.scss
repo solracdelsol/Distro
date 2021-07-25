@@ -24,6 +24,17 @@
   position: fixed;
   top: 0;
   left: 0;
+
+  .back-to-landing{
+    background-image: asset_url('left-arrow.svg');
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    filter: invert(1);
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
   
   .login-form-container{
     // background-color: transparentize($color: black, $amount: 0.3);
@@ -140,6 +151,16 @@
   left: 0;
   
 
+  .back-to-landing{
+    background-image: asset_url('left-arrow.svg');
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    filter: invert(1);
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
 
   .signup-form-container{
     // background-color: transparentize($color: black, $amount: 0.3);

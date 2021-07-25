@@ -20,6 +20,11 @@ class LoginForm extends React.Component {
   render() {
     const signupFormTemplate = () => (
       <div className="login-background">
+
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <div className="back-to-landing"></div>
+        </Link>
+
         <div className="login-form-container">
           <div className="login-form">
             <div className="login-input">

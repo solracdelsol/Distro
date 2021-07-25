@@ -22,6 +22,9 @@ class Signup extends React.Component{
   render(){
     return (
         <div className="signup-background">
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <div className="back-to-landing"></div>
+          </Link>
           <div className="signup-form-container">
             <div className="signup-form">
               <div className="signup-input">

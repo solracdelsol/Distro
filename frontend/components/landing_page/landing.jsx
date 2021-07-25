@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
             <div className="landing-sub-caption">
               Whether you’re part of a school club, gaming group, worldwide art
               community, or just a handful of friends that want to spend time
-              together, Discord makes it easy to talk every day and hang out
+              together, Distro makes it easy to talk every day and hang out
               more often.
             </div>
           </div>
