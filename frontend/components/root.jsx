@@ -7,7 +7,9 @@ import App from "./app.jsx";
 
 const CableApp = {}
 
-CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:5005/cable`)
+// CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:8080/cable`)
+CableApp.cable = actionCable.createConsumer(`wss://distro-t8x9.onrender.com:8080/cable`)
+
 
 
 const Root = ({ store }) => (

@@ -5,7 +5,9 @@ Rails.application.configure do
   # config.web_socket_server_url = "wss://distroo.herokuapp.com/cable" # THIS WAS ME YET AGAIN AS PER HEROKU BLOG INSTRUCTIONS https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable
 
   config.action_cable.allowed_request_origins = ['https://distro-t8x9.onrender.com', 'http://distro-t8x9.onrender.com']
-  config.web_socket_server_url = "wss://distro-t8x9.onrender.com:5005/cable" # THIS WAS ME YET AGAIN AS PER HEROKU BLOG INSTRUCTIONS https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable
+  # config.web_socket_server_url = "wss://distro-t8x9.onrender.com/cable" # THIS WAS ME YET AGAIN AS PER HEROKU BLOG INSTRUCTIONS https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable
+  config.action_cable.url = "wss://distro-t8x9.onrender.com:8080/cable"
+
 
   # config.require_master_key = true
   # Code is not reloaded between requests.
