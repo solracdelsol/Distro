@@ -75,11 +75,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+  production:
+    url: postgres://prod_24lp_user:0ezeShRbyzefNTML9LvOtF0SCbRQr8Ev@dpg-ckp14hnkc2qc73c95mlg-a/prod_24lp
 #
 production:
   <<: *default
-  database: Distro_production
-  username: Distro
-  password: <%= ENV['DISTRO_DATABASE_PASSWORD'] %>
+  database: prod_24lp
+  username: prod_24lp_user
+  password: 0ezeShRbyzefNTML9LvOtF0SCbRQr8Ev
