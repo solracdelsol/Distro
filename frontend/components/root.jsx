@@ -7,7 +7,7 @@ import App from "./app.jsx";
 
 const CableApp = {}
 
-CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
+CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:5005/cable`)
 
 
 const Root = ({ store }) => (
