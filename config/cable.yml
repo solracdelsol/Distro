@@ -7,7 +7,8 @@ test:
 production:
   adapter: redis
   # url: <%= ENV.fetch("REDIS_URL") { "redis://:p007fc9ad831ef86b450e60a580057e24af6f3e17e3d4a9a44b3a5922fa11d90c@ec2-18-215-106-153.compute-1.amazonaws.com:25759" } %>
-    url: redis://your-redis-server-url:6379/1
+    # url: <%= ENV.fetch("REDIS_URL") { "redis://distro-t8x9.onrender.com" } %>
+  url: redis://distro-t8x9.onrender.com:6379/1
 
   channel_prefix: Distro_production
 
