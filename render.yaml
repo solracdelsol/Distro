@@ -1,7 +1,5 @@
 databases:
-  - name: Distro
-    databaseName: Distro_production
-    user: Distro
+  - name: prod
 
 services:
   - type: web
