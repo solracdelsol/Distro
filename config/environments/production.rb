@@ -4,7 +4,7 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = ['https://distroo.herokuapp.com', 'http://distroo.herokuapp.com']
   config.web_socket_server_url = "wss://distroo.herokuapp.com/cable" # THIS WAS ME YET AGAIN AS PER HEROKU BLOG INSTRUCTIONS https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable
 
-
+  config.require_master_key = true
   # Code is not reloaded between requests.
   config.cache_classes = true
 
