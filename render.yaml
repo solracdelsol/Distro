@@ -1,0 +1,18 @@
+databases:
+  - name: Distro
+    databaseName: Distro_production
+    user: Distro
+
+services:
+  - type: web
+    name: Distro
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: Distro
+          property: connectionString
+      - key: SECRET_KEY_BASE
+        sync: false
